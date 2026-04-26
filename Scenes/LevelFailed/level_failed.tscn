@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dymnw8bqymmaj"]
+
+[ext_resource type="Script" uid="uid://c452oxaumxj64" path="res://Scripts/level_failed.gd" id="1_ie4lc"]
+[ext_resource type="Texture2D" uid="uid://tk73dfw21q53" path="res://Assets/Images/Icons/Next Square Button.png" id="2_5rem1"]
+[ext_resource type="Texture2D" uid="uid://dedyvawwk5ri0" path="res://Assets/Images/Icons/Return Square Button.png" id="3_hinvl"]
+[ext_resource type="Texture2D" uid="uid://c7oj02dx5w8ie" path="res://Assets/Images/Icons/Home Square Button.png" id="4_oj3f3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ie4lc"]
+bg_color = Color(0.65882355, 0.078431375, 0, 0.3372549)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2vpbu"]
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="LevelFailed" type="Control" unique_id=1616606214]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ie4lc")
+
+[node name="ColorRectFailed" type="ColorRect" parent="." unique_id=243187136]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.800001
+anchor_bottom = 16.2
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.19607843)
+
+[node name="LevelFailedButtons" type="Panel" parent="." unique_id=1867097505]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.2
+anchor_top = 6.4
+anchor_right = 17.6
+anchor_bottom = 9.6
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ie4lc")
+metadata/_edit_use_anchors_ = true
+
+[node name="Next" type="Button" parent="LevelFailedButtons" unique_id=603408340]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 72.0
+offset_right = 384.0
+offset_bottom = 280.0
+scale = Vector2(0.15, 0.15)
+icon = ExtResource("2_5rem1")
+
+[node name="Restart" type="Button" parent="LevelFailedButtons" unique_id=1798003648]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 72.0
+offset_right = 320.0
+offset_bottom = 280.0
+scale = Vector2(0.15, 0.15)
+icon = ExtResource("3_hinvl")
+
+[node name="MainMenu" type="Button" parent="LevelFailedButtons" unique_id=332672369]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 72.0
+offset_right = 256.0
+offset_bottom = 280.0
+scale = Vector2(0.15, 0.15)
+icon = ExtResource("4_oj3f3")
+
+[node name="FailedMessage" type="Label" parent="." unique_id=322240466]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 281.0
+offset_right = 643.0
+offset_bottom = 304.0
+text = "LEVEL FAILED"
+label_settings = SubResource("LabelSettings_2vpbu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="LevelFailedButtons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="LevelFailedButtons/MainMenu" to="." method="_on_main_menu_pressed"]

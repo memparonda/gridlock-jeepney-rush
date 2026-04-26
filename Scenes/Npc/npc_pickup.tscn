@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://rj3y50jqjnt5"]
+
+[ext_resource type="Script" uid="uid://dxenpq8nbpuer" path="res://Scripts/character_body_2d.gd" id="1_7lj36"]
+[ext_resource type="Texture2D" uid="uid://dm01t65x58lt6" path="res://Assets/Images/Sprites/pick_up_truck_sprite.png" id="2_u3c0k"]
+[ext_resource type="AudioStream" uid="uid://80ac0uou08d3" path="res://Assets/Audios/car-hit-sound-effect.mp3" id="3_2uq72"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lw1sd"]
+radius = 7.6923084
+height = 33.846157
+
+[node name="NPC-Pickup" type="CharacterBody2D" unique_id=1764185225 groups=["npc"]]
+scale = Vector2(1.3, 1.3)
+script = ExtResource("1_7lj36")
+max_speed = 200.0
+acceleration = 250.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1246593282]
+rotation = 1.5707964
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_u3c0k")
+
+[node name="PickupTruckCollisionShape2D" type="CollisionShape2D" parent="." unique_id=1573261547]
+rotation = 4.712389
+shape = SubResource("CapsuleShape2D_lw1sd")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=761475877]
+target_position = Vector2(50, 0)
+
+[node name="VehicleCrash" type="AudioStreamPlayer2D" parent="." unique_id=1120691724]
+stream = ExtResource("3_2uq72")
+volume_db = -16.0
+max_distance = 500.0

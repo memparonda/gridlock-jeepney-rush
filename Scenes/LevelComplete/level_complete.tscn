@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://djm6lu38ltfcp"]
+
+[ext_resource type="Script" uid="uid://f66vems37esm" path="res://Scripts/level_complete.gd" id="1_qgyug"]
+[ext_resource type="Texture2D" uid="uid://tk73dfw21q53" path="res://Assets/Images/Icons/Next Square Button.png" id="2_xjgdd"]
+[ext_resource type="Texture2D" uid="uid://dedyvawwk5ri0" path="res://Assets/Images/Icons/Return Square Button.png" id="3_4mmct"]
+[ext_resource type="Texture2D" uid="uid://c7oj02dx5w8ie" path="res://Assets/Images/Icons/Home Square Button.png" id="4_mo8ie"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vbwt"]
+bg_color = Color(0, 0.12941177, 0.30588236, 0.3372549)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2vpbu"]
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="LevelComplete" type="Control" unique_id=1616606214]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qgyug")
+
+[node name="ColorRectComplete" type="ColorRect" parent="." unique_id=243187136]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.800001
+anchor_bottom = 16.2
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.19607843)
+
+[node name="LevelCompleteButtons" type="Panel" parent="." unique_id=1867097505]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.2
+anchor_top = 6.4
+anchor_right = 17.6
+anchor_bottom = 9.6
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5vbwt")
+metadata/_edit_use_anchors_ = true
+
+[node name="Next" type="Button" parent="LevelCompleteButtons" unique_id=603408340]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 72.0
+offset_right = 384.0
+offset_bottom = 280.0
+scale = Vector2(0.15, 0.15)
+icon = ExtResource("2_xjgdd")
+
+[node name="Restart" type="Button" parent="LevelCompleteButtons" unique_id=1798003648]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 72.0
+offset_right = 320.0
+offset_bottom = 280.0
+scale = Vector2(0.15, 0.15)
+icon = ExtResource("3_4mmct")
+
+[node name="MainMenu" type="Button" parent="LevelCompleteButtons" unique_id=332672369]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 72.0
+offset_right = 256.0
+offset_bottom = 280.0
+scale = Vector2(0.15, 0.15)
+icon = ExtResource("4_mo8ie")
+
+[node name="CompleteMessage" type="Label" parent="." unique_id=322240466]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 281.0
+offset_right = 643.0
+offset_bottom = 304.0
+text = "LEVEL COMPLETE"
+label_settings = SubResource("LabelSettings_2vpbu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="LevelCompleteButtons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="LevelCompleteButtons/MainMenu" to="." method="_on_main_menu_pressed"]

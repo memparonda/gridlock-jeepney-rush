@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ccie5eb18b5ia"]
+
+[ext_resource type="Script" uid="uid://dmo3sqke44np5" path="res://Scripts/audio_controller.gd" id="1_e81ua"]
+[ext_resource type="AudioStream" uid="uid://bt48a5a84sfq5" path="res://Assets/Audios/WAV_Izakaya Funes - Skies of the Round Table.ogg" id="2_650ee"]
+[ext_resource type="AudioStream" uid="uid://ckbgk5frhsv3p" path="res://Assets/Audios/JDSherbert - Ambiences Music Pack - Junction Jazz.ogg" id="2_ckwdd"]
+[ext_resource type="AudioStream" uid="uid://5ft02701rx8v" path="res://Assets/Audios/freesound_community-level-win-6416.mp3" id="4_2tmf7"]
+[ext_resource type="AudioStream" uid="uid://dn23ttbkv8y81" path="res://Assets/Audios/freesound_community-level-failed-80951.mp3" id="5_f0yff"]
+
+[node name="AudioController" type="Node" unique_id=241860162]
+script = ExtResource("1_e81ua")
+
+[node name="Menu_Music" type="AudioStreamPlayer" parent="." unique_id=655077066]
+stream = ExtResource("2_650ee")
+volume_db = -30.0
+
+[node name="Level_Music" type="AudioStreamPlayer" parent="." unique_id=229703464]
+stream = ExtResource("2_ckwdd")
+volume_db = -15.0
+parameters/looping = false
+
+[node name="Level_Complete_Sound" type="AudioStreamPlayer" parent="." unique_id=847825634]
+stream = ExtResource("4_2tmf7")
+volume_db = -10.0
+
+[node name="Level_Failed_Sound" type="AudioStreamPlayer" parent="." unique_id=1130901676]
+stream = ExtResource("5_f0yff")
+volume_db = -20.0

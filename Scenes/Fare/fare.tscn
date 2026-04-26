@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ckuf0nyyb2cmj"]
+
+[ext_resource type="Script" uid="uid://bat2yy7p0jvdy" path="res://Scripts/fare.gd" id="1_ea020"]
+[ext_resource type="Texture2D" uid="uid://xp5xom7c2bys" path="res://Assets/Images/Sprites/fare.png" id="1_rhl5n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ea020"]
+size = Vector2(52.666664, 136.66667)
+
+[node name="Fare" type="Area2D" unique_id=1056091125]
+scale = Vector2(3, 3)
+script = ExtResource("1_ea020")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1013108235]
+position = Vector2(-0.38, 0)
+scale = Vector2(0.020742187, 0.02)
+texture = ExtResource("1_rhl5n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1687298323]
+position = Vector2(0, 16.333)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_ea020")

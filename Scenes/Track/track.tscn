@@ -1,0 +1,311 @@
+[gd_scene format=3 uid="uid://bqu0u23yy5apt"]
+
+[ext_resource type="Script" uid="uid://d2a1bcsiu05ta" path="res://Scripts/level-1.gd" id="1_wkqia"]
+[ext_resource type="PackedScene" uid="uid://hw14egxivkvg" path="res://Scenes/Map/map.tscn" id="1_wo0x4"]
+[ext_resource type="PackedScene" uid="uid://5my308li5xxk" path="res://Scenes/Car/car.tscn" id="3_ldns5"]
+[ext_resource type="PackedScene" uid="uid://bifrc78o528gb" path="res://Scenes/Track/destination.tscn" id="5_bwi5r"]
+[ext_resource type="PackedScene" uid="uid://ckuf0nyyb2cmj" path="res://Scenes/Fare/fare.tscn" id="6_ycsi2"]
+[ext_resource type="PackedScene" uid="uid://dbioq7qllnvsr" path="res://Scenes/Npc/path_2d.tscn" id="8_cqobo"]
+[ext_resource type="PackedScene" uid="uid://e1s4sdjiijji" path="res://Scenes/Npc/scenery_dialogue_1.tscn" id="9_ywxya"]
+[ext_resource type="PackedScene" uid="uid://dni5b6v03uei5" path="res://Scenes/TrafficLights/traffic_light.tscn" id="10_f72o8"]
+[ext_resource type="PackedScene" uid="uid://da74sbrhliptx" path="res://Scenes/Npc/path2d_npcfast.tscn" id="11_wo0x4"]
+[ext_resource type="PackedScene" uid="uid://bngrcvtxfnqax" path="res://Scenes/TrafficLights/npctl_detection_zone.tscn" id="12_qqa6f"]
+[ext_resource type="PackedScene" uid="uid://be34ya7fad5wd" path="res://Scenes/TrafficLights/traffic_light_npc.tscn" id="12_tuy4u"]
+[ext_resource type="PackedScene" uid="uid://f8dm83qpc18r" path="res://Scenes/TrafficLights/detection_zone.tscn" id="13_n6iga"]
+[ext_resource type="PackedScene" uid="uid://dkd4icabncgha" path="res://Scenes/TrafficLights/traffic_light_controller.tscn" id="15_wkqia"]
+[ext_resource type="PackedScene" uid="uid://dhhs17d56tqpt" path="res://Scenes/Npc/dialogue_trigger_zone.tscn" id="16_wv2yh"]
+[ext_resource type="PackedScene" uid="uid://h0hc6iqp6bn8" path="res://Scenes/Npc/dialogue_trigger_zone2.tscn" id="17_swdrr"]
+[ext_resource type="PackedScene" uid="uid://dymnw8bqymmaj" path="res://Scenes/LevelFailed/level_failed.tscn" id="18_wa53l"]
+[ext_resource type="PackedScene" uid="uid://bwbvrk4ld8s3p" path="res://Scenes/Pause/pause_menu.tscn" id="18_wxoal"]
+[ext_resource type="PackedScene" uid="uid://djm6lu38ltfcp" path="res://Scenes/LevelComplete/level_complete.tscn" id="19_vxeeh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ldns5"]
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Level-1" type="Node" unique_id=1172744317]
+script = ExtResource("1_wkqia")
+
+[node name="Node2D" parent="." unique_id=1024027294 instance=ExtResource("1_wo0x4")]
+position = Vector2(6126, 422)
+
+[node name="Car" parent="." unique_id=251914906 instance=ExtResource("3_ldns5")]
+position = Vector2(3740, -4233)
+scale = Vector2(1.5, 1.5)
+collision_mask = 3
+acceleration = null
+max_speed = null
+friction = null
+brake_force = null
+turn_speed = null
+drift_factor = 0.5
+turn_accel = null
+turn_friction = null
+total_time = null
+max_capacity = null
+min_pitch = null
+max_pitch = null
+pitch_smoothness = null
+gear_speeds = null
+max_gears = null
+rpm_response = null
+
+[node name="HUD" type="CanvasLayer" parent="Car" unique_id=1535369585]
+
+[node name="TimerLabel" type="Label" parent="Car/HUD" unique_id=462204770]
+offset_right = 130.0
+offset_bottom = 45.0
+text = "Time: 90"
+label_settings = SubResource("LabelSettings_ldns5")
+metadata/_edit_use_anchors_ = true
+
+[node name="GameTimer" type="Timer" parent="." unique_id=701395141]
+autostart = true
+
+[node name="Destination" parent="." unique_id=1475264837 instance=ExtResource("5_bwi5r")]
+position = Vector2(12363, 1215)
+passenger_scale = Vector2(0.3, 0.3)
+
+[node name="Fare" parent="." unique_id=646981274 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
+position = Vector2(3695.0002, -4282)
+rotation = 4.712389
+scale = Vector2(1.5, 1.5)
+possible_destinations = [NodePath("../Destination")]
+
+[node name="Fare2" parent="." unique_id=1056091125 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
+position = Vector2(3695.0002, -4253)
+rotation = -1.5707964
+scale = Vector2(1.5, 1.5)
+possible_destinations = [NodePath("../Destination")]
+
+[node name="Fare3" parent="." unique_id=1626061497 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
+position = Vector2(3695, -4306)
+rotation = -1.5707964
+scale = Vector2(1.5, 1.5)
+possible_destinations = [NodePath("../Destination")]
+
+[node name="Fare4" parent="." unique_id=1537894996 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
+position = Vector2(3695.0002, -4228)
+rotation = -1.5707964
+scale = Vector2(1.5, 1.5)
+possible_destinations = [NodePath("../Destination")]
+
+[node name="NPC" parent="." unique_id=1320005000 instance=ExtResource("8_cqobo")]
+position = Vector2(6125, 426)
+
+[node name="NPC2" parent="." unique_id=342683197 instance=ExtResource("11_wo0x4")]
+position = Vector2(4598, 1285)
+
+[node name="SceneryDialogue1" parent="." unique_id=345415369 instance=ExtResource("9_ywxya")]
+
+[node name="TrafficLightsNPC" type="Node2D" parent="." unique_id=514726583]
+
+[node name="LightsNPC" type="Node2D" parent="TrafficLightsNPC" unique_id=449725813]
+
+[node name="TLNPC1" parent="TrafficLightsNPC/LightsNPC" unique_id=1152920577 groups=["traffic_ew"] instance=ExtResource("12_tuy4u")]
+position = Vector2(4694, -3613)
+rotation = 3.1415927
+
+[node name="TLNPC2" parent="TrafficLightsNPC/LightsNPC" unique_id=1628709986 groups=["traffic_ns"] instance=ExtResource("12_tuy4u")]
+position = Vector2(4447, -1845)
+rotation = 1.5707964
+
+[node name="TLNPC3" parent="TrafficLightsNPC/LightsNPC" unique_id=1752986464 groups=["traffic_ns"] instance=ExtResource("12_tuy4u")]
+position = Vector2(4670, -1616)
+rotation = 4.712389
+
+[node name="TLNPC4" parent="TrafficLightsNPC/LightsNPC" unique_id=126039262 groups=["traffic_ew"] instance=ExtResource("12_tuy4u")]
+position = Vector2(6367, -3615)
+rotation = 3.1415927
+
+[node name="TLNPC5" parent="TrafficLightsNPC/LightsNPC" unique_id=37327841 groups=["traffic_ns"] instance=ExtResource("12_tuy4u")]
+position = Vector2(6366, -3409)
+rotation = 4.712389
+
+[node name="TLNPC6" parent="TrafficLightsNPC/LightsNPC" unique_id=452435882 groups=["traffic_ew"] instance=ExtResource("12_tuy4u")]
+position = Vector2(8683, -3434)
+
+[node name="TLNPC7" parent="TrafficLightsNPC/LightsNPC" unique_id=792493729 groups=["traffic_ns"] instance=ExtResource("12_tuy4u")]
+position = Vector2(8686, -3641)
+rotation = 1.5707964
+
+[node name="TLNPC8" parent="TrafficLightsNPC/LightsNPC" unique_id=487031446 groups=["traffic_ew"] instance=ExtResource("12_tuy4u")]
+position = Vector2(10369, -3435)
+
+[node name="TLNPC9" parent="TrafficLightsNPC/LightsNPC" unique_id=997304118 groups=["traffic_ew"] instance=ExtResource("12_tuy4u")]
+position = Vector2(12055, -3435)
+
+[node name="TLNPC10" parent="TrafficLightsNPC/LightsNPC" unique_id=1775206735 groups=["traffic_ns"] instance=ExtResource("12_tuy4u")]
+position = Vector2(13936, -5200)
+rotation = 4.712389
+
+[node name="TLNPC11" parent="TrafficLightsNPC/LightsNPC" unique_id=1209157869 groups=["traffic_ew"] instance=ExtResource("12_tuy4u")]
+position = Vector2(13959, -5405)
+rotation = 3.1415927
+
+[node name="TLNPC12" parent="TrafficLightsNPC/LightsNPC" unique_id=1823115369 groups=["traffic_ew"] instance=ExtResource("12_tuy4u")]
+position = Vector2(12268, -5405)
+rotation = 3.1415927
+
+[node name="TLNPC13" parent="TrafficLightsNPC/LightsNPC" unique_id=1885333069 groups=["traffic_ew"] instance=ExtResource("12_tuy4u")]
+position = Vector2(10589, -5404)
+rotation = 3.1415927
+
+[node name="DetectionZoneNPC" type="Node2D" parent="TrafficLightsNPC" unique_id=268871037]
+
+[node name="NDZ1" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=1535428411 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(4731, -3560)
+rotation = 1.5707964
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC1")
+
+[node name="NDZ2" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=764953496 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(4513, -1877)
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC2")
+
+[node name="NDZ3" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=1969322609 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(4598, -1573)
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC3")
+
+[node name="NDZ4" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=266501695 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(6420, -3550)
+rotation = 1.5707964
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC4")
+
+[node name="NDZ5" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=563042181 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(6295, -3356)
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC5")
+
+[node name="NDZ6" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=775433675 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(8634, -3480)
+rotation = 1.5707964
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC6")
+
+[node name="NDZ7" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=1490934721 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(8757, -3679)
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC7")
+
+[node name="NDZ8" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=1125277323 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(10316, -3480)
+rotation = 1.5707964
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC8")
+
+[node name="NDZ9" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=1505203825 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(11997, -3480)
+rotation = 1.5707964
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC9")
+
+[node name="NDZ10" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=817696971 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(13880, -5152)
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC10")
+
+[node name="NDZ11" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=1411805561 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(14002, -5350)
+rotation = 1.5707964
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC11")
+
+[node name="NDZ12" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=868626122 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(12319, -5349)
+rotation = 1.5707964
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC12")
+
+[node name="NDZ13" parent="TrafficLightsNPC/DetectionZoneNPC" unique_id=1725419800 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("12_qqa6f")]
+position = Vector2(10639, -5348)
+rotation = 1.5707964
+traffic_light_npc = NodePath("../../LightsNPC/TLNPC13")
+
+[node name="TrafficLights" type="Node2D" parent="." unique_id=1811397904]
+
+[node name="Lights" type="Node2D" parent="TrafficLights" unique_id=1966824942]
+
+[node name="TL1" parent="TrafficLights/Lights" unique_id=1332197808 groups=["traffic_ns"] instance=ExtResource("10_f72o8")]
+position = Vector2(4447, -3626)
+rotation = 1.5707964
+
+[node name="TL2" parent="TrafficLights/Lights" unique_id=164515164 groups=["traffic_ns"] instance=ExtResource("10_f72o8")]
+position = Vector2(4447, -1845)
+rotation = 1.5707964
+
+[node name="TL3" parent="TrafficLights/Lights" unique_id=1447472232 groups=["traffic_ew"] instance=ExtResource("10_f72o8")]
+position = Vector2(6141, -3434)
+
+[node name="TL4" parent="TrafficLights/Lights" unique_id=760949061 groups=["traffic_ew"] instance=ExtResource("10_f72o8")]
+position = Vector2(8683, -3434)
+
+[node name="TL5" parent="TrafficLights/Lights" unique_id=1385731357 groups=["traffic_ew"] instance=ExtResource("10_f72o8")]
+position = Vector2(10369, -3435)
+
+[node name="TL6" parent="TrafficLights/Lights" unique_id=441056228 groups=["traffic_ew"] instance=ExtResource("10_f72o8")]
+position = Vector2(12055, -3435)
+
+[node name="TL7" parent="TrafficLights/Lights" unique_id=1401537164 groups=["traffic_ns"] instance=ExtResource("10_f72o8")]
+position = Vector2(10576, -5209)
+rotation = -1.5707964
+
+[node name="TL8" parent="TrafficLights/Lights" unique_id=697151819 groups=["traffic_ns"] instance=ExtResource("10_f72o8")]
+position = Vector2(12256, -5202)
+rotation = -1.5707964
+
+[node name="TL9" parent="TrafficLights/Lights" unique_id=1248249977 groups=["traffic_ns"] instance=ExtResource("10_f72o8")]
+position = Vector2(13936, -5200)
+rotation = -1.5707964
+
+[node name="DetectionZones" type="Node2D" parent="TrafficLights" unique_id=680036637]
+
+[node name="DZ1" parent="TrafficLights/DetectionZones" unique_id=738278024 node_paths=PackedStringArray("traffic_light") instance=ExtResource("13_n6iga")]
+position = Vector2(4558, -3519)
+traffic_light = NodePath("../../Lights/TL1")
+
+[node name="DZ2" parent="TrafficLights/DetectionZones" unique_id=1159058764 node_paths=PackedStringArray("traffic_light") instance=ExtResource("13_n6iga")]
+position = Vector2(4558, -1724)
+traffic_light = NodePath("../../Lights/TL2")
+
+[node name="DZ3" parent="TrafficLights/DetectionZones" unique_id=1153920283 node_paths=PackedStringArray("traffic_light") instance=ExtResource("13_n6iga")]
+position = Vector2(6253, -3508)
+traffic_light = NodePath("../../Lights/TL3")
+
+[node name="DZ4" parent="TrafficLights/DetectionZones" unique_id=577392211 node_paths=PackedStringArray("traffic_light") instance=ExtResource("13_n6iga")]
+position = Vector2(8797, -3521)
+traffic_light = NodePath("../../Lights/TL4")
+
+[node name="DZ5" parent="TrafficLights/DetectionZones" unique_id=946759508 node_paths=PackedStringArray("traffic_light") instance=ExtResource("13_n6iga")]
+position = Vector2(10477, -3519)
+traffic_light = NodePath("../../Lights/TL5")
+
+[node name="DZ6" parent="TrafficLights/DetectionZones" unique_id=1539383841 node_paths=PackedStringArray("traffic_light") instance=ExtResource("13_n6iga")]
+position = Vector2(12158, -3517)
+traffic_light = NodePath("../../Lights/TL6")
+
+[node name="DZ7" parent="TrafficLights/DetectionZones" unique_id=751264142 node_paths=PackedStringArray("traffic_light") instance=ExtResource("13_n6iga")]
+position = Vector2(10478, -5305)
+traffic_light = NodePath("../../Lights/TL7")
+
+[node name="DZ8" parent="TrafficLights/DetectionZones" unique_id=1007801651 node_paths=PackedStringArray("traffic_light") instance=ExtResource("13_n6iga")]
+position = Vector2(12157, -5303)
+traffic_light = NodePath("../../Lights/TL8")
+
+[node name="DZ9" parent="TrafficLights/DetectionZones" unique_id=1883099612 node_paths=PackedStringArray("traffic_light") instance=ExtResource("13_n6iga")]
+position = Vector2(13838, -5304)
+traffic_light = NodePath("../../Lights/TL9")
+
+[node name="TrafficLightController" parent="." unique_id=1945327216 instance=ExtResource("15_wkqia")]
+yellow_time = 2.0
+
+[node name="DialogueTriggerZone" parent="." unique_id=1292944438 instance=ExtResource("16_wv2yh")]
+position = Vector2(4713, -3586)
+
+[node name="DialogueTriggerZone2" parent="." unique_id=1339048853 instance=ExtResource("17_swdrr")]
+position = Vector2(4623, -3388)
+rotation = 1.5707964
+
+[node name="FailedLayer" type="CanvasLayer" parent="." unique_id=1121335150]
+
+[node name="LevelFailed" parent="FailedLayer" unique_id=1616606214 instance=ExtResource("18_wa53l")]
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=97145811]
+
+[node name="PauseMenu" parent="PauseLayer" unique_id=1024301167 instance=ExtResource("18_wxoal")]
+
+[node name="CompleteLayer" type="CanvasLayer" parent="." unique_id=1826444076]
+
+[node name="LevelComplete" parent="CompleteLayer" unique_id=405235507 instance=ExtResource("19_vxeeh")]

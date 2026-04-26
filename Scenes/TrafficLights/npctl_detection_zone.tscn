@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bngrcvtxfnqax"]
+
+[ext_resource type="Script" uid="uid://2nvxak04ydte" path="res://Scripts/npctl_detection_zone.gd" id="1_5xyki"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyftp"]
+size = Vector2(75, 146)
+
+[node name="NPCTLDetectionZone" type="Area2D" unique_id=1535428411]
+script = ExtResource("1_5xyki")
+
+[node name="NPCDetectionZone" type="CollisionShape2D" parent="." unique_id=1159953110]
+shape = SubResource("RectangleShape2D_eyftp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

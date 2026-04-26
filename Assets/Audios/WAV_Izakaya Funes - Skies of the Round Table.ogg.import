@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bt48a5a84sfq5"
+path="res://.godot/imported/WAV_Izakaya Funes - Skies of the Round Table.ogg-1df3cb29b43e4041ff1720399247420e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audios/WAV_Izakaya Funes - Skies of the Round Table.ogg"
+dest_files=["res://.godot/imported/WAV_Izakaya Funes - Skies of the Round Table.ogg-1df3cb29b43e4041ff1720399247420e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

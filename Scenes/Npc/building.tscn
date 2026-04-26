@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0e3cq7to5wxa"]
+
+[ext_resource type="Texture2D" uid="uid://bkp2ojua7yd8y" path="res://Assets/square-rounded-512.png" id="1_avus0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj2qm"]
+size = Vector2(241, 235)
+
+[node name="Building" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(203, 168.00002)
+scale = Vector2(0.51464844, 0.5048828)
+texture = ExtResource("1_avus0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(202.5, 166.5)
+shape = SubResource("RectangleShape2D_uj2qm")

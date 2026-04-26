@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://h0hc6iqp6bn8"]
+
+[ext_resource type="Script" uid="uid://xvolmkp6ssa" path="res://Scripts/dialogue_trigger_zone_2.gd" id="1_6oebs"]
+[ext_resource type="AudioStream" uid="uid://ognlp2atnrqm" path="res://Assets/Audios/rightfoot8bit.mp3" id="2_5bckl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_348p5"]
+size = Vector2(242, 150)
+
+[node name="DialogueTriggerZone2" type="Area2D" unique_id=1292944438]
+script = ExtResource("1_6oebs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=160413993]
+position = Vector2(111, 65)
+shape = SubResource("RectangleShape2D_348p5")
+
+[node name="Chatter" type="AudioStreamPlayer2D" parent="." unique_id=1490872399]
+stream = ExtResource("2_5bckl")
+volume_db = -10.4
+pitch_scale = 0.5
+parameters/looping = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

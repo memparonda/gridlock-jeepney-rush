@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bifrc78o528gb"]
+
+[ext_resource type="Script" uid="uid://dofajfda522xr" path="res://Scripts/destination.gd" id="1_d16ph"]
+[ext_resource type="Texture2D" uid="uid://cst6m376hxa4s" path="res://Assets/Images/Icons/pick-up-drop-off.png" id="1_ykdrj"]
+[ext_resource type="Texture2D" uid="uid://cphq5mn50xwfs" path="res://Assets/Images/Sprites/fare_small.png" id="2_w478e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d16ph"]
+size = Vector2(119.5, 82.75)
+
+[node name="Destination(X)" type="Area2D" unique_id=1397616143]
+script = ExtResource("1_d16ph")
+passenger_texture = ExtResource("2_w478e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1661616775]
+position = Vector2(0, -69.25)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_d16ph")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=289294753]
+position = Vector2(0, -69)
+scale = Vector2(3.7343752, 2.59375)
+texture = ExtResource("1_ykdrj")

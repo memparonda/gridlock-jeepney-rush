@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dni5b6v03uei5"]
+
+[ext_resource type="Script" uid="uid://c7i6j2f50xuic" path="res://Scripts/traffic_light.gd" id="1_e4syq"]
+[ext_resource type="Texture2D" uid="uid://bnx308ijd1lku" path="res://Assets/Images/Sprites/red_light.png" id="2_b4jcy"]
+[ext_resource type="Texture2D" uid="uid://bgc3kotlcbppi" path="res://Assets/Images/Sprites/yellow_light.png" id="3_0wupk"]
+[ext_resource type="Texture2D" uid="uid://d01hu0rq0rqhm" path="res://Assets/Images/Sprites/green_light.png" id="4_rn435"]
+
+[node name="TrafficLight" type="Node2D" unique_id=164515164]
+script = ExtResource("1_e4syq")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=891423172]
+
+[node name="RedLight" type="Sprite2D" parent="Visuals" unique_id=1904787072]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_b4jcy")
+
+[node name="YellowLight" type="Sprite2D" parent="Visuals" unique_id=1247746981]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("3_0wupk")
+
+[node name="GreenLight" type="Sprite2D" parent="Visuals" unique_id=413635541]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("4_rn435")
