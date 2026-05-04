@@ -5,18 +5,19 @@
 [ext_resource type="Texture2D" uid="uid://cphq5mn50xwfs" path="res://Assets/Images/Sprites/fare_small.png" id="2_w478e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d16ph"]
-size = Vector2(119.5, 82.75)
+size = Vector2(57, 19.75)
 
 [node name="Destination(X)" type="Area2D" unique_id=1397616143]
 script = ExtResource("1_d16ph")
 passenger_texture = ExtResource("2_w478e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1661616775]
-position = Vector2(0, -69.25)
+position = Vector2(0, -6.25)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_d16ph")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=289294753]
-position = Vector2(0, -69)
-scale = Vector2(3.7343752, 2.59375)
+visible = false
+position = Vector2(1.9073486e-06, -5.999996)
+scale = Vector2(1.7812499, 0.625)
 texture = ExtResource("1_ykdrj")

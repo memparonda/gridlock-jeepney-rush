@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bqu0u23yy5apt"]
+[gd_scene format=3 uid="uid://b0prr2eqb2ow8"]
 
 [ext_resource type="Script" uid="uid://d2a1bcsiu05ta" path="res://Scripts/level-1.gd" id="1_wkqia"]
 [ext_resource type="PackedScene" uid="uid://hw14egxivkvg" path="res://Scenes/Map/map.tscn" id="1_wo0x4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bifrc78o528gb" path="res://Scenes/Track/destination.tscn" id="5_bwi5r"]
 [ext_resource type="PackedScene" uid="uid://ckuf0nyyb2cmj" path="res://Scenes/Fare/fare.tscn" id="6_ycsi2"]
 [ext_resource type="PackedScene" uid="uid://dbioq7qllnvsr" path="res://Scenes/Npc/path_2d.tscn" id="8_cqobo"]
+[ext_resource type="PackedScene" uid="uid://5a5510db7wer" path="res://Scenes/Fuel_Station/fuel_station.tscn" id="8_ir4jo"]
 [ext_resource type="PackedScene" uid="uid://e1s4sdjiijji" path="res://Scenes/Npc/scenery_dialogue_1.tscn" id="9_ywxya"]
 [ext_resource type="PackedScene" uid="uid://dni5b6v03uei5" path="res://Scenes/TrafficLights/traffic_light.tscn" id="10_f72o8"]
 [ext_resource type="PackedScene" uid="uid://da74sbrhliptx" path="res://Scenes/Npc/path2d_npcfast.tscn" id="11_wo0x4"]
@@ -24,6 +25,17 @@ font_size = 32
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxeeh"]
+bg_color = Color(0.9101666, 0.13967285, 5.7756904e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67upd"]
+bg_color = Color(0.06666667, 0.49411765, 0.03529412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_67upd"]
+font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Level-1" type="Node" unique_id=1172744317]
 script = ExtResource("1_wkqia")
 
@@ -31,62 +43,74 @@ script = ExtResource("1_wkqia")
 position = Vector2(6126, 422)
 
 [node name="Car" parent="." unique_id=251914906 instance=ExtResource("3_ldns5")]
-position = Vector2(3740, -4233)
+position = Vector2(4113.9995, -4303)
+rotation = -1.5777614
 scale = Vector2(1.5, 1.5)
 collision_mask = 3
-acceleration = null
-max_speed = null
-friction = null
-brake_force = null
-turn_speed = null
 drift_factor = 0.5
-turn_accel = null
-turn_friction = null
-total_time = null
-max_capacity = null
-min_pitch = null
-max_pitch = null
-pitch_smoothness = null
-gear_speeds = null
-max_gears = null
-rpm_response = null
 
 [node name="HUD" type="CanvasLayer" parent="Car" unique_id=1535369585]
 
 [node name="TimerLabel" type="Label" parent="Car/HUD" unique_id=462204770]
 offset_right = 130.0
 offset_bottom = 45.0
-text = "Time: 90"
+text = "Gas: N"
 label_settings = SubResource("LabelSettings_ldns5")
 metadata/_edit_use_anchors_ = true
+
+[node name="FuelBar" type="ProgressBar" parent="Car/HUD" unique_id=765107983]
+offset_left = 17.0
+offset_top = 48.0
+offset_right = 31.0
+offset_bottom = 133.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vxeeh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_67upd")
+value = 100.0
+fill_mode = 3
+
+[node name="WarningLabel" type="Label" parent="Car/HUD" unique_id=734610582]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -481.5
+offset_top = -201.0
+offset_right = 481.5
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_67upd")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameTimer" type="Timer" parent="." unique_id=701395141]
 autostart = true
 
 [node name="Destination" parent="." unique_id=1475264837 instance=ExtResource("5_bwi5r")]
-position = Vector2(12363, 1215)
+position = Vector2(12018, 1212)
 passenger_scale = Vector2(0.3, 0.3)
 
 [node name="Fare" parent="." unique_id=646981274 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
-position = Vector2(3695.0002, -4282)
+position = Vector2(3694.0002, -4587)
 rotation = 4.712389
 scale = Vector2(1.5, 1.5)
 possible_destinations = [NodePath("../Destination")]
 
 [node name="Fare2" parent="." unique_id=1056091125 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
-position = Vector2(3695.0002, -4253)
+position = Vector2(3694.0002, -4558)
 rotation = -1.5707964
 scale = Vector2(1.5, 1.5)
 possible_destinations = [NodePath("../Destination")]
 
 [node name="Fare3" parent="." unique_id=1626061497 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
-position = Vector2(3695, -4306)
+position = Vector2(3694, -4611)
 rotation = -1.5707964
 scale = Vector2(1.5, 1.5)
 possible_destinations = [NodePath("../Destination")]
 
 [node name="Fare4" parent="." unique_id=1537894996 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
-position = Vector2(3695.0002, -4228)
+position = Vector2(3694.0002, -4533)
 rotation = -1.5707964
 scale = Vector2(1.5, 1.5)
 possible_destinations = [NodePath("../Destination")]
@@ -96,6 +120,9 @@ position = Vector2(6125, 426)
 
 [node name="NPC2" parent="." unique_id=342683197 instance=ExtResource("11_wo0x4")]
 position = Vector2(4598, 1285)
+
+[node name="Fuel_Station" parent="." unique_id=1144419310 instance=ExtResource("8_ir4jo")]
+position = Vector2(12986, -3733)
 
 [node name="SceneryDialogue1" parent="." unique_id=345415369 instance=ExtResource("9_ywxya")]
 

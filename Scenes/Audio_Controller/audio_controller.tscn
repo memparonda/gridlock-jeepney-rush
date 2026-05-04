@@ -12,11 +12,12 @@ script = ExtResource("1_e81ua")
 [node name="Menu_Music" type="AudioStreamPlayer" parent="." unique_id=655077066]
 stream = ExtResource("2_650ee")
 volume_db = -30.0
+parameters/looping = true
 
 [node name="Level_Music" type="AudioStreamPlayer" parent="." unique_id=229703464]
 stream = ExtResource("2_ckwdd")
 volume_db = -15.0
-parameters/looping = false
+parameters/looping = true
 
 [node name="Level_Complete_Sound" type="AudioStreamPlayer" parent="." unique_id=847825634]
 stream = ExtResource("4_2tmf7")

@@ -10,11 +10,17 @@ extends CharacterBody2D
 @export var turn_accel: float = 2.0
 @export var turn_friction: float = 2.5
 
-@export var total_time: float = 80.0   # Total time in seconds
+@export var total_time: float = 160.0   # Total time in seconds
 @export var max_capacity: int = 14
 @onready var engine_sound: AudioStreamPlayer2D = $EngineSound
 @onready var engine_startup: AudioStreamPlayer2D = $EngineStartup
 @onready var vehicle_crash: AudioStreamPlayer2D = $VehicleCrash
+
+# --- NEW: Camera Settings ---
+@onready var camera = $Camera2D
+@export var camera_distance: float = 150.0 # Increased slightly for top-down speed
+@export var camera_smoothness: float = 5.0
+# ----------------------------
 
 @export var min_pitch := 1.0
 @export var max_pitch := 1.8
@@ -22,6 +28,13 @@ extends CharacterBody2D
 @export var gear_speeds := [0.0, 50.0, 120.0, 200.0, 300.0] # speed thresholds
 @export var max_gears := 4
 @export var rpm_response := 2.0   # how fast RPM reacts
+
+# --- NEW: Fuel System ---
+@export var max_fuel: float = 100.0
+@export var fuel_drain_rate: float = 1.0 
+@export var refuel_rate: float = 25.0 # How fast it fills per second (takes 4 seconds to full)
+var current_fuel: float = max_fuel
+var is_refueling := false # Tracks if we are parked at a pump
 
 var current_gear := 1
 var last_gear := 1
@@ -61,6 +74,14 @@ func start_engine_sequence():
 
 func _ready():
 	start_engine_sequence()
+	
+# --- NEW: Detach camera rotation from the Jeepney body ---
+	if camera:
+		camera.top_level = true
+		
+		# Instantly snap the camera to the correct starting position so it doesn't fly in!
+		var forward = Vector2.UP.rotated(rotation)
+		camera.global_position = global_position + forward * camera_distance
 
 func play_vehicle_crash():
 	vehicle_crash.play()
@@ -78,18 +99,34 @@ func _physics_process(delta):
 	if timer_active:
 		current_time -= delta
 		current_time = max(current_time, 0)
+
+# --- NEW: Late Warning Trigger ---
+		if current_time <= 30.0 and not warned_late:
+			warned_late = true
+			show_late_warning()
+
+		# --- UPDATED: Drain OR Fill Fuel ---
+		if is_refueling:
+			# Fill the tank while parked
+			current_fuel += refuel_rate * delta
+			current_fuel = min(current_fuel, max_fuel) # Caps it at 100
+		elif abs(speed) > 5:
+			# Drain the tank while driving
+			current_fuel -= fuel_drain_rate * delta
+			current_fuel = max(current_fuel, 0) # Caps it at 0
 	
-# LOSE CONDITION
-	if current_time <= 0 and not GameManager.game_over:
-		print("Time's up!")
+	# --- UPDATED: LOSE CONDITION (Time OR Fuel) ---
+	if (current_time <= 0 or current_fuel <= 0) and not GameManager.game_over:
+		if current_time <= 0:
+			print("Time's up!")
+		else:
+			print("Out of gas!")
 		timer_active = false
 		engine_sound.stop()
 		set_physics_process(false) 
 		
-		# Give a flat 1.5 second delay so the game doesn't instantly freeze
 		GameManager.trigger_defeat(1.5)
 
-	
 	# ✅ Collision handling (FIXED)
 	if get_slide_collision_count() > 0:
 		if not has_penalized_this_frame:
@@ -98,6 +135,7 @@ func _physics_process(delta):
 			play_vehicle_crash()
 	else:
 		has_penalized_this_frame = false
+		
 	# 🚀 Acceleration
 	if input_forward > 0:
 		speed += acceleration * input_forward * delta
@@ -165,7 +203,7 @@ func _physics_process(delta):
 		last_gear = current_gear
 		gear_shift_cooldown = 1.6  # longer = more realistic
 	
-		engine_rpm *= 0.7  # drop RPM instead of pitch  # drop RPM instead of pitch
+		engine_rpm *= 0.7  # drop RPM instead of pitch  
 
 	# 🎵 Pitch based on RPM (not speed anymore)
 	var target_pitch = lerp(min_pitch, max_pitch, engine_rpm)
@@ -180,6 +218,13 @@ func _physics_process(delta):
 	if abs(speed) < 5:
 		engine_rpm = lerp(engine_rpm, 0.1, 2.0 * delta)
 		engine_sound.pitch_scale = min_pitch
+	
+# --- NEW: Dynamic Camera Logic (MOVED TO PHYSICS) ---
+	if camera:
+		# We reuse the 'forward' variable that was already calculated earlier in this frame!
+		var target_pos = global_position + forward * camera_distance
+		
+		camera.global_position = camera.global_position.lerp(target_pos, camera_smoothness * delta)
 
 func has_empty_seats() -> bool:
 	return current_passengers.size() < max_capacity
@@ -220,7 +265,7 @@ func drop_off(destination: Area2D) -> int:
 	print("Dropped off ", dropped_count, " passengers at ", destination.name)
 	print("Passengers remaining: ", current_passengers.size())
 	
-# WIN CONDITION
+	# WIN CONDITION
 	if had_passengers and current_passengers.size() == 0:
 		print("All passengers delivered!")
 		timer_active = false
@@ -239,4 +284,31 @@ func drop_off(destination: Area2D) -> int:
 
 func _process(delta):
 	# ✅ Update UI
-	$HUD/TimerLabel.text = "Time: " + str(round(current_time))
+	if has_node("HUD/TimerLabel"):
+		$HUD/TimerLabel.text = "Time: " + str(round(current_time))
+		
+	# --- NEW: Update Fuel UI ---
+	if has_node("HUD/FuelBar"):
+		$HUD/FuelBar.value = current_fuel
+
+# --- UPDATED: Refuel Toggles ---
+func start_refueling():
+	is_refueling = true
+	print("Started refueling...")
+
+func stop_refueling():
+	is_refueling = false
+	print("Stopped refueling.")
+
+# --- NEW: Late Warning Dialogue ---
+func show_late_warning():
+	if has_node("HUD/WarningLabel"):
+		var warning_label = $HUD/WarningLabel
+		warning_label.text = "We're about to be late!"
+		warning_label.visible = true
+		
+		# Wait for 3 seconds without freezing the game
+		await get_tree().create_timer(3.0).timeout
+		
+		# Hide the text again
+		warning_label.visible = false

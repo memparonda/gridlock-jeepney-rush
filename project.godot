@@ -1,3 +1,11 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [animation]
@@ -6,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Gridlock-Jeepney-Rush-Alpha-4.1"
+config/name="Gridlock-Jeepney-Rush-Alpha-4.2"
 run/main_scene="uid://c8j6ymmpbr5pm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Assets/Images/Icons/icon.svg"
@@ -16,6 +24,10 @@ config/icon="res://Assets/Images/Icons/icon.svg"
 DialogueManager="*res://Scripts/DialogueManager.gd"
 GameManager="*res://Scripts/GameManager.gd"
 AudioController="*uid://ccie5eb18b5ia"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [global_group]
 
