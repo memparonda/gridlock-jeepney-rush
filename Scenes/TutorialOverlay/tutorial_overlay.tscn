@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c0pmlemw3eui1"]
+
+[ext_resource type="Script" uid="uid://bcp34wju8hjkv" path="res://Scripts/tutorial_overlay.gd" id="1_7rjpx"]
+[ext_resource type="Texture2D" uid="uid://deht8xo54i7ju" path="res://Assets/Images/Icons/tutorial_controls.png" id="1_wrx4i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wrx4i"]
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="TutorialOverlay" type="Control" unique_id=2080283185]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7rjpx")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1745021779]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_wrx4i")
+
+[node name="TutorialText" type="Label" parent="." unique_id=838870558]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 576.0
+offset_right = 368.0
+offset_bottom = 599.0
+text = "MOVEMENT CONTROLS"
+label_settings = SubResource("LabelSettings_wrx4i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutorialText2" type="Label" parent="." unique_id=502384403]
+layout_mode = 0
+offset_left = 776.0
+offset_top = 576.0
+offset_right = 984.0
+offset_bottom = 599.0
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_wrx4i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1499400184]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.19607843)

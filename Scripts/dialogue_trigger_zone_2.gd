@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var dialogue_text: Array[String] = [
-	"Not much traffic here, but I hope you can get us there on time."
+	"You sure you can go through all that traffic?"
 ]
 
 @onready var sound = $Chatter

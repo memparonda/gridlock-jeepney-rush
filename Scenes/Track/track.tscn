@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dymnw8bqymmaj" path="res://Scenes/LevelFailed/level_failed.tscn" id="18_wa53l"]
 [ext_resource type="PackedScene" uid="uid://bwbvrk4ld8s3p" path="res://Scenes/Pause/pause_menu.tscn" id="18_wxoal"]
 [ext_resource type="PackedScene" uid="uid://djm6lu38ltfcp" path="res://Scenes/LevelComplete/level_complete.tscn" id="19_vxeeh"]
+[ext_resource type="PackedScene" uid="uid://c0pmlemw3eui1" path="res://Scenes/TutorialOverlay/tutorial_overlay.tscn" id="20_wa53l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ldns5"]
 font_size = 32
@@ -52,21 +53,23 @@ drift_factor = 0.5
 [node name="HUD" type="CanvasLayer" parent="Car" unique_id=1535369585]
 
 [node name="TimerLabel" type="Label" parent="Car/HUD" unique_id=462204770]
-offset_right = 130.0
+offset_left = 8.0
+offset_right = 138.0
 offset_bottom = 45.0
-text = "Gas: N"
 label_settings = SubResource("LabelSettings_ldns5")
 metadata/_edit_use_anchors_ = true
 
 [node name="FuelBar" type="ProgressBar" parent="Car/HUD" unique_id=765107983]
-offset_left = 17.0
-offset_top = 48.0
-offset_right = 31.0
-offset_bottom = 133.0
+offset_left = 184.0
+offset_top = 56.0
+offset_right = 199.89182
+offset_bottom = 151.26617
+rotation = 1.5707964
 theme_override_styles/background = SubResource("StyleBoxFlat_vxeeh")
 theme_override_styles/fill = SubResource("StyleBoxFlat_67upd")
 value = 100.0
 fill_mode = 3
+show_percentage = false
 
 [node name="WarningLabel" type="Label" parent="Car/HUD" unique_id=734610582]
 anchors_preset = 7
@@ -83,6 +86,15 @@ grow_vertical = 0
 label_settings = SubResource("LabelSettings_67upd")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FuelLabel" type="Label" parent="Car/HUD" unique_id=411359743]
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 138.0
+offset_bottom = 85.0
+text = "Fuel:"
+label_settings = SubResource("LabelSettings_ldns5")
+metadata/_edit_use_anchors_ = true
 
 [node name="GameTimer" type="Timer" parent="." unique_id=701395141]
 autostart = true
@@ -142,7 +154,7 @@ rotation = 1.5707964
 position = Vector2(4670, -1616)
 rotation = 4.712389
 
-[node name="TLNPC4" parent="TrafficLightsNPC/LightsNPC" unique_id=126039262 groups=["traffic_ew"] instance=ExtResource("12_tuy4u")]
+[node name="TLNPC4" parent="TrafficLightsNPC/LightsNPC" unique_id=126039262 groups=["traffic_ns"] instance=ExtResource("12_tuy4u")]
 position = Vector2(6367, -3615)
 rotation = 3.1415927
 
@@ -316,7 +328,6 @@ position = Vector2(13838, -5304)
 traffic_light = NodePath("../../Lights/TL9")
 
 [node name="TrafficLightController" parent="." unique_id=1945327216 instance=ExtResource("15_wkqia")]
-yellow_time = 2.0
 
 [node name="DialogueTriggerZone" parent="." unique_id=1292944438 instance=ExtResource("16_wv2yh")]
 position = Vector2(4713, -3586)
@@ -336,3 +347,7 @@ rotation = 1.5707964
 [node name="CompleteLayer" type="CanvasLayer" parent="." unique_id=1826444076]
 
 [node name="LevelComplete" parent="CompleteLayer" unique_id=405235507 instance=ExtResource("19_vxeeh")]
+
+[node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=619799756]
+
+[node name="TutorialOverlay" parent="TutorialLayer" unique_id=2080283185 instance=ExtResource("20_wa53l")]

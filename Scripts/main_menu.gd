@@ -8,8 +8,7 @@ func _ready() -> void:
 	
 func _on_play_pressed() -> void:
 	AudioController.stop_menu_music(1.0)
-	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://Scenes/Track/track.tscn")
+	SceneTransition.transition_to_scene("res://Scenes/Track/track.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

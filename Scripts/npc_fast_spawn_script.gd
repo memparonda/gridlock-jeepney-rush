@@ -5,7 +5,9 @@ extends Path2D
 	{"scene": preload("res://Scenes/Npc/npc_fast.tscn"), "weight": 20},
 	{"scene": preload("res://Scenes/Npc/npc_taxi.tscn"), "weight": 20},
 	{"scene": preload("res://Scenes/Npc/npc_pickup.tscn"), "weight": 20},
-	{"scene": preload("res://Scenes/Npc/npc_truck.tscn"), "weight": 10}
+		{"scene": preload("res://Scenes/Npc/npc_truck.tscn"), "weight": 4},
+	{"scene": preload("res://Scenes/Npc/npc_bus.tscn"), "weight": 4},
+	{"scene": preload("res://Scenes/Npc/npc_police_1.tscn"), "weight": 2}
 ]
 
 func get_weighted_scene():
@@ -41,8 +43,8 @@ func spawn_npc(offset: float):
 
 func _ready():
 	var path_length = curve.get_baked_length()
-	var spacing = path_length / 35.0  # evenly distribute. MUST BE SAME VALUE AS i IN RANGE!
+	var spacing = path_length / 25.0  # evenly distribute. MUST BE SAME VALUE AS i IN RANGE!
 	
-	for i in range(35): # MUST BE SAME VALUE AS SPACING!
+	for i in range(25): # MUST BE SAME VALUE AS SPACING!
 		var offset = i * spacing
 		spawn_npc(offset)

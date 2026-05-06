@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b3bp2pxaiimco"]
+
+[ext_resource type="Script" uid="uid://8c31mekaulff" path="res://Scripts/scene_transition.gd" id="1_dg22p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg22p"]
+bg_color = Color(0.22670749, 0.22670752, 0.2267074, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpj7r"]
+bg_color = Color(0.8217887, 0.8217887, 0.8217885, 1)
+
+[node name="SceneTransition" type="CanvasLayer" unique_id=874799566]
+process_mode = 3
+layer = 100
+script = ExtResource("1_dg22p")
+
+[node name="LoadingRect" type="ColorRect" parent="." unique_id=1388910616]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.34781694, 0.34781697, 0.3478169, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=644321192]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 8.0
+offset_right = -112.12436
+offset_bottom = 263.9662
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.712389
+theme_override_styles/background = SubResource("StyleBoxFlat_dg22p")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dpj7r")
+fill_mode = 2
+show_percentage = false

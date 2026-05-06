@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d3p8g66pq32fr" path="res://Scripts/main_menu.gd" id="1_fry56"]
 [ext_resource type="Texture2D" uid="uid://d12nfloebtulj" path="res://Assets/Images/Icons/ferrari.jpg" id="2_13x35"]
 [ext_resource type="Texture2D" uid="uid://dh68cevr46gx4" path="res://Assets/Images/Icons/TitleArt.png" id="3_exjb5"]
+[ext_resource type="PackedScene" uid="uid://b3bp2pxaiimco" path="res://Scenes/Scene_Transition/scene_transition.tscn" id="4_13x35"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhts7"]
 texture = ExtResource("2_13x35")
@@ -115,6 +116,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_06t4h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fu7sn")
 text = "Quit"
+
+[node name="SceneTransition" parent="." unique_id=874799566 instance=ExtResource("4_13x35")]
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

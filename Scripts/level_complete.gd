@@ -27,7 +27,7 @@ func _on_restart_pressed():
 	GameManager.can_pause = true
 	GameManager.is_paused = false
 	get_tree().paused = false
-
+	AudioController.level_complete_sound.stop()
 	await get_tree().process_frame
 	get_tree().reload_current_scene()
 
@@ -37,6 +37,6 @@ func _on_main_menu_pressed():
 	GameManager.can_pause = false
 	GameManager.is_paused = false
 	get_tree().paused = false
-
+	AudioController.level_complete_sound.stop()
 	AudioController.stop_level_music(1.0)
 	get_tree().change_scene_to_file("res://Scenes/Main_Menu/main_menu.tscn")

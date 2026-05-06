@@ -24,6 +24,14 @@
 [ext_resource type="Texture2D" uid="uid://o74orhuo81ib" path="res://Assets/Images/Buildings/pickup_zone.png" id="22_qo3gp"]
 [ext_resource type="Texture2D" uid="uid://c0h2qh87oibjv" path="res://Assets/Images/Buildings/refuel_zone.png" id="23_tftes"]
 [ext_resource type="Texture2D" uid="uid://bcihrumwi1pfb" path="res://Assets/Images/Buildings/drop_off_zone.png" id="23_utnqo"]
+[ext_resource type="Texture2D" uid="uid://cct4bpaqsxqlu" path="res://Assets/Images/Sprites/truck_sprite_1.png" id="25_445lv"]
+[ext_resource type="Texture2D" uid="uid://bh8ip4h8wrrqi" path="res://Assets/Images/Sprites/npc_taxi.png" id="26_1lxys"]
+[ext_resource type="Texture2D" uid="uid://rysoebtp2wkv" path="res://Assets/Images/Sprites/car_sprite_1.png" id="27_nupl1"]
+[ext_resource type="Texture2D" uid="uid://dm01t65x58lt6" path="res://Assets/Images/Sprites/pick_up_truck_sprite.png" id="28_kgrij"]
+[ext_resource type="Texture2D" uid="uid://ba4dmn4b1yt" path="res://Assets/Images/Sprites/car_sprite_2.png" id="29_xwtib"]
+[ext_resource type="Texture2D" uid="uid://deoowmjvrvmh0" path="res://Assets/Images/Sprites/car_sprite_4.png" id="30_tr1ul"]
+[ext_resource type="Texture2D" uid="uid://blt0fxdok10gf" path="res://Assets/Images/Sprites/bus_sprite.png" id="31_1lxys"]
+[ext_resource type="Texture2D" uid="uid://kutrerxlrwmy" path="res://Assets/Images/Sprites/police_car_1.png" id="32_nupl1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oy1rq"]
 texture = ExtResource("2_e0an3")
@@ -2630,6 +2638,10 @@ polygon = PackedVector2Array(-2654, -4652, -1470, -4652, -1470, -4604, -2654, -4
 position = Vector2(-238, -625)
 polygon = PackedVector2Array(-2584, -5050, -2426, -5050, -2425, -3297, -2584, -3297)
 
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="MapCollisions" unique_id=1275685589]
+position = Vector2(9446, 707)
+polygon = PackedVector2Array(-2734, -4846, -2446, -4846, -2446, -4718, -2734, -4718)
+
 [node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="MapCollisions" unique_id=1765483372]
 position = Vector2(1168, 2989)
 polygon = PackedVector2Array(-2648, -5064, -2615, -5064, -2616, -2136, -2651, -2136)
@@ -2686,9 +2698,17 @@ polygon = PackedVector2Array(-2649, -5051, -1145, -5051, -1145, -3403, -4169, -3
 position = Vector2(8945, 3680)
 polygon = PackedVector2Array(-3881, -2875, -1433, -2875, -1433, -2827, -3881, -2827)
 
-[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="MapCollisions" unique_id=1275685589]
+[node name="CollisionPolygon2D23" type="CollisionPolygon2D" parent="MapCollisions" unique_id=1309294954]
 position = Vector2(9446, 707)
-polygon = PackedVector2Array(-2734, -4846, -2446, -4846, -2446, -4718, -2734, -4718)
+polygon = PackedVector2Array(-11068, -4544, -11040, -4544, -11036, -2967, -11071, -2967)
+
+[node name="CollisionPolygon2D24" type="CollisionPolygon2D" parent="MapCollisions" unique_id=570279814]
+position = Vector2(9446, 707)
+polygon = PackedVector2Array(-11068, -4544, -11040, -4544, -11036, -2967, -11071, -2967)
+
+[node name="CollisionPolygon2D25" type="CollisionPolygon2D" parent="MapCollisions" unique_id=1703469170]
+position = Vector2(9526, 709)
+polygon = PackedVector2Array(-11069, -4544, -11036, -4544, -11036, -2967, -11071, -2967)
 
 [node name="pickup_zone" type="Sprite2D" parent="." unique_id=169442809]
 modulate = Color(1, 1, 1, 0.47058824)
@@ -2708,3 +2728,226 @@ modulate = Color(1, 1, 1, 0.47058824)
 position = Vector2(5891.9995, 779)
 scale = Vector2(0.12863885, 0.09865565)
 texture = ExtResource("23_utnqo")
+
+[node name="dummy_cars" type="Node2D" parent="." unique_id=912899523]
+position = Vector2(1, 409)
+
+[node name="dummy_car" type="Sprite2D" parent="dummy_cars" unique_id=568554143]
+position = Vector2(-1609, -4177)
+scale = Vector2(0.11, 0.13)
+texture = ExtResource("25_445lv")
+
+[node name="dummy_car2" type="Sprite2D" parent="dummy_cars" unique_id=1695819161]
+position = Vector2(-1609, -4089)
+rotation = 3.1415927
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("26_1lxys")
+
+[node name="dummy_car3" type="Sprite2D" parent="dummy_cars" unique_id=1343232373]
+position = Vector2(-1609.0001, -4033.0002)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("27_nupl1")
+
+[node name="dummy_car4" type="Sprite2D" parent="dummy_cars" unique_id=262534775]
+position = Vector2(-1609, -3977.0002)
+rotation = 3.1415927
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("28_kgrij")
+
+[node name="dummy_car5" type="Sprite2D" parent="dummy_cars" unique_id=1987709053]
+position = Vector2(-1609, -3857)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("29_xwtib")
+
+[node name="dummy_car6" type="Sprite2D" parent="dummy_cars" unique_id=186758338]
+position = Vector2(-1609, -3913)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("30_tr1ul")
+
+[node name="dummy_car7" type="Sprite2D" parent="dummy_cars" unique_id=1737445934]
+position = Vector2(-1608.9999, -3753.0002)
+scale = Vector2(0.11, 0.13)
+texture = ExtResource("25_445lv")
+
+[node name="dummy_car8" type="Sprite2D" parent="dummy_cars" unique_id=1149710017]
+position = Vector2(-1608.0001, -3613)
+scale = Vector2(0.07, 0.1)
+texture = ExtResource("31_1lxys")
+
+[node name="dummy_car9" type="Sprite2D" parent="dummy_cars" unique_id=273454182]
+position = Vector2(-1609, -3473)
+scale = Vector2(0.07, 0.1)
+texture = ExtResource("31_1lxys")
+
+[node name="dummy_car10" type="Sprite2D" parent="dummy_cars" unique_id=571208497]
+position = Vector2(-1609, -3385)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("27_nupl1")
+
+[node name="dummy_car11" type="Sprite2D" parent="dummy_cars" unique_id=176635993]
+position = Vector2(-1609, -3329)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("30_tr1ul")
+
+[node name="dummy_car12" type="Sprite2D" parent="dummy_cars" unique_id=96022623]
+position = Vector2(-1609, -3017)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("32_nupl1")
+
+[node name="dummy_car13" type="Sprite2D" parent="dummy_cars" unique_id=1277519064]
+position = Vector2(-1609, -3201)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("32_nupl1")
+
+[node name="dummy_car14" type="Sprite2D" parent="dummy_cars" unique_id=583937745]
+position = Vector2(-1609, -3265.0002)
+rotation = 3.1415927
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("28_kgrij")
+
+[node name="dummy_car15" type="Sprite2D" parent="dummy_cars" unique_id=1557344013]
+position = Vector2(-1609.0001, -3137)
+rotation = 3.1415927
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("26_1lxys")
+
+[node name="dummy_car16" type="Sprite2D" parent="dummy_cars" unique_id=1632175816]
+position = Vector2(-1609, -3081)
+rotation = 3.1415927
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("26_1lxys")
+
+[node name="dummy_car17" type="Sprite2D" parent="dummy_cars" unique_id=484162678]
+position = Vector2(-1609, -2953)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("29_xwtib")
+
+[node name="dummy_car18" type="Sprite2D" parent="dummy_cars" unique_id=156272779]
+position = Vector2(-1609, -2849)
+scale = Vector2(0.07, 0.1)
+texture = ExtResource("31_1lxys")
+
+[node name="dummy_car19" type="Sprite2D" parent="dummy_cars" unique_id=1120014823]
+position = Vector2(-1609, -2753)
+rotation = 3.1415927
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("28_kgrij")
+
+[node name="dummy_car20" type="Sprite2D" parent="dummy_cars" unique_id=278248504]
+position = Vector2(-1609, -2689)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("27_nupl1")
+
+[node name="dummy_car21" type="Sprite2D" parent="dummy_cars" unique_id=1432032089]
+position = Vector2(-1528.0004, -2736)
+rotation = -3.1415925
+scale = Vector2(0.11, 0.13)
+texture = ExtResource("25_445lv")
+
+[node name="dummy_car22" type="Sprite2D" parent="dummy_cars" unique_id=969928601]
+position = Vector2(-1528.0004, -2823.9998)
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("26_1lxys")
+
+[node name="dummy_car23" type="Sprite2D" parent="dummy_cars" unique_id=960352340]
+position = Vector2(-1528.0002, -2879.9995)
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("27_nupl1")
+
+[node name="dummy_car24" type="Sprite2D" parent="dummy_cars" unique_id=215864697]
+position = Vector2(-1528.0004, -2935.9995)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("28_kgrij")
+
+[node name="dummy_car25" type="Sprite2D" parent="dummy_cars" unique_id=43686354]
+position = Vector2(-1528.0004, -3055.9998)
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("29_xwtib")
+
+[node name="dummy_car26" type="Sprite2D" parent="dummy_cars" unique_id=2014964233]
+position = Vector2(-1528.0004, -2999.9998)
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("30_tr1ul")
+
+[node name="dummy_car27" type="Sprite2D" parent="dummy_cars" unique_id=272081825]
+position = Vector2(-1528.0005, -3159.9995)
+rotation = -3.1415925
+scale = Vector2(0.11, 0.13)
+texture = ExtResource("25_445lv")
+
+[node name="dummy_car28" type="Sprite2D" parent="dummy_cars" unique_id=1759349041]
+position = Vector2(-1529.0002, -3299.9998)
+rotation = -3.1415925
+scale = Vector2(0.07, 0.1)
+texture = ExtResource("31_1lxys")
+
+[node name="dummy_car29" type="Sprite2D" parent="dummy_cars" unique_id=1135120515]
+position = Vector2(-1528.0002, -3439.9998)
+rotation = -3.1415925
+scale = Vector2(0.07, 0.1)
+texture = ExtResource("31_1lxys")
+
+[node name="dummy_car30" type="Sprite2D" parent="dummy_cars" unique_id=85850260]
+position = Vector2(-1528.0002, -3527.9998)
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("27_nupl1")
+
+[node name="dummy_car31" type="Sprite2D" parent="dummy_cars" unique_id=834966745]
+position = Vector2(-1528.0002, -3583.9998)
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("30_tr1ul")
+
+[node name="dummy_car32" type="Sprite2D" parent="dummy_cars" unique_id=1257483965]
+position = Vector2(-1528.0002, -3895.9998)
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("32_nupl1")
+
+[node name="dummy_car33" type="Sprite2D" parent="dummy_cars" unique_id=1992896044]
+position = Vector2(-1528.0002, -3711.9998)
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("32_nupl1")
+
+[node name="dummy_car34" type="Sprite2D" parent="dummy_cars" unique_id=2048519484]
+position = Vector2(-1528.0002, -3647.9995)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("28_kgrij")
+
+[node name="dummy_car35" type="Sprite2D" parent="dummy_cars" unique_id=1638539502]
+position = Vector2(-1528.0001, -3775.9998)
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("26_1lxys")
+
+[node name="dummy_car36" type="Sprite2D" parent="dummy_cars" unique_id=820171912]
+position = Vector2(-1528.0002, -3831.9998)
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("26_1lxys")
+
+[node name="dummy_car37" type="Sprite2D" parent="dummy_cars" unique_id=1927209867]
+position = Vector2(-1528.0002, -3959.9998)
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("29_xwtib")
+
+[node name="dummy_car38" type="Sprite2D" parent="dummy_cars" unique_id=1133568275]
+position = Vector2(-1528.0002, -4063.9998)
+rotation = -3.1415925
+scale = Vector2(0.07, 0.1)
+texture = ExtResource("31_1lxys")
+
+[node name="dummy_car39" type="Sprite2D" parent="dummy_cars" unique_id=690396101]
+position = Vector2(-1528.0002, -4160)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("28_kgrij")
+
+[node name="dummy_car40" type="Sprite2D" parent="dummy_cars" unique_id=792685842]
+position = Vector2(-1528.0002, -4224)
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("27_nupl1")

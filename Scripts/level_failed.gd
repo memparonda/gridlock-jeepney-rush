@@ -5,9 +5,9 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	# Listen for the victory signal from the GameManager!
-	GameManager.on_level_failed.connect(show_level_complete)
+	GameManager.on_level_failed.connect(show_level_failed)
 
-func show_level_complete():
+func show_level_failed():
 	print("UI: Showing Level Failed Screen")
 	
 	# 🎬 Show UI with fade (Pausing is now handled by GameManager)
@@ -27,7 +27,7 @@ func _on_restart_pressed():
 	GameManager.can_pause = true
 	GameManager.is_paused = false
 	get_tree().paused = false
-
+	AudioController.level_failed_sound.stop()
 	await get_tree().process_frame
 	get_tree().reload_current_scene()
 
@@ -37,6 +37,6 @@ func _on_main_menu_pressed():
 	GameManager.can_pause = false
 	GameManager.is_paused = false
 	get_tree().paused = false
-
 	AudioController.stop_level_music(1.0)
+	AudioController.level_failed_sound.stop()
 	get_tree().change_scene_to_file("res://Scenes/Main_Menu/main_menu.tscn")
