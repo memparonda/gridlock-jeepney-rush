@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Gridlock-Jeepney-Rush-Alpha-4.2"
+config/name="Gridlock-Jeepney-Rush-Alpha-4.3 (Traffic Jam Test)"
 run/main_scene="uid://c8j6ymmpbr5pm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Assets/Images/Icons/icon.svg"
@@ -24,6 +24,7 @@ config/icon="res://Assets/Images/Icons/icon.svg"
 DialogueManager="*res://Scripts/DialogueManager.gd"
 GameManager="*res://Scripts/GameManager.gd"
 AudioController="*uid://ccie5eb18b5ia"
+SceneTransition="*uid://b3bp2pxaiimco"
 
 [display]
 
