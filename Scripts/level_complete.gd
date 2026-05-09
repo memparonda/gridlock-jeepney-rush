@@ -21,6 +21,22 @@ func show_level_complete():
 
 
 # 🎮 BUTTONS
+func _on_next_level_button_pressed():
+	# 1. Unpause the game so the next level isn't frozen!
+	get_tree().paused = false 
+	GameManager.is_paused = false
+	# 2. Tell the GameManager we are no longer in a "game over/victory" state
+	GameManager.game_over = false 
+	AudioController.level_complete_sound.stop()
+	await get_tree().process_frame
+	# 3. Check if we actually have a next level set
+	if GameManager.next_level_scene != "":
+		# Transition to the next level!
+		SceneTransition.transition_to_scene(GameManager.next_level_scene)
+	else:
+		# Safety net: If there is no next level (like beating the final level), 
+		# send them back to the Main Menu!
+		SceneTransition.transition_to_scene("res://Scenes/Main_Menu/main_menu.tscn")
 
 func _on_restart_pressed():
 	GameManager.game_over = false

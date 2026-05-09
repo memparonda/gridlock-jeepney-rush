@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bwbvrk4ld8s3p" path="res://Scenes/Pause/pause_menu.tscn" id="18_wxoal"]
 [ext_resource type="PackedScene" uid="uid://djm6lu38ltfcp" path="res://Scenes/LevelComplete/level_complete.tscn" id="19_vxeeh"]
 [ext_resource type="PackedScene" uid="uid://c0pmlemw3eui1" path="res://Scenes/TutorialOverlay/tutorial_overlay.tscn" id="20_wa53l"]
+[ext_resource type="PackedScene" uid="uid://8wrn2lfqbctq" path="res://Scenes/RouteMap/open_routemap.tscn" id="21_67upd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ldns5"]
 font_size = 32
@@ -46,7 +47,7 @@ position = Vector2(6126, 422)
 [node name="Car" parent="." unique_id=251914906 instance=ExtResource("3_ldns5")]
 position = Vector2(4113.9995, -4303)
 rotation = -1.5777614
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.5000001, 1.5000001)
 collision_mask = 3
 drift_factor = 0.5
 
@@ -96,36 +97,35 @@ text = "Fuel:"
 label_settings = SubResource("LabelSettings_ldns5")
 metadata/_edit_use_anchors_ = true
 
-[node name="GameTimer" type="Timer" parent="." unique_id=701395141]
-autostart = true
-
 [node name="Destination" parent="." unique_id=1475264837 instance=ExtResource("5_bwi5r")]
 position = Vector2(12018, 1212)
 passenger_scale = Vector2(0.3, 0.3)
 
-[node name="Fare" parent="." unique_id=646981274 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
-position = Vector2(3694.0002, -4587)
-rotation = 4.712389
-scale = Vector2(1.5, 1.5)
-possible_destinations = [NodePath("../Destination")]
+[node name="Passengers" type="Node2D" parent="." unique_id=1291969887]
 
-[node name="Fare2" parent="." unique_id=1056091125 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
+[node name="Fare" parent="Passengers" unique_id=646981274 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
+position = Vector2(3694.0002, -4587)
+rotation = -1.5707964
+scale = Vector2(1.5, 1.5)
+possible_destinations = [NodePath("../../Destination")]
+
+[node name="Fare2" parent="Passengers" unique_id=1056091125 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
 position = Vector2(3694.0002, -4558)
 rotation = -1.5707964
 scale = Vector2(1.5, 1.5)
-possible_destinations = [NodePath("../Destination")]
+possible_destinations = [NodePath("../../Destination")]
 
-[node name="Fare3" parent="." unique_id=1626061497 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
+[node name="Fare3" parent="Passengers" unique_id=1626061497 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
 position = Vector2(3694, -4611)
 rotation = -1.5707964
 scale = Vector2(1.5, 1.5)
-possible_destinations = [NodePath("../Destination")]
+possible_destinations = [NodePath("../../Destination")]
 
-[node name="Fare4" parent="." unique_id=1537894996 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
+[node name="Fare4" parent="Passengers" unique_id=1537894996 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
 position = Vector2(3694.0002, -4533)
 rotation = -1.5707964
 scale = Vector2(1.5, 1.5)
-possible_destinations = [NodePath("../Destination")]
+possible_destinations = [NodePath("../../Destination")]
 
 [node name="NPC" parent="." unique_id=1320005000 instance=ExtResource("8_cqobo")]
 position = Vector2(6125, 426)
@@ -335,6 +335,8 @@ position = Vector2(4713, -3586)
 [node name="DialogueTriggerZone2" parent="." unique_id=1339048853 instance=ExtResource("17_swdrr")]
 position = Vector2(4623, -3388)
 rotation = 1.5707964
+
+[node name="RouteMap" parent="." unique_id=103809363 instance=ExtResource("21_67upd")]
 
 [node name="FailedLayer" type="CanvasLayer" parent="." unique_id=1121335150]
 

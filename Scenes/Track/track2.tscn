@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://ulcgidvcasvf"]
+
+[ext_resource type="PackedScene" uid="uid://bxt65aigqdom7" path="res://Scenes/Map/map1.tscn" id="1_kkuso"]
+[ext_resource type="Script" uid="uid://deeqhw0tsqvg8" path="res://Scripts/level-2.gd" id="1_smlcm"]
+[ext_resource type="PackedScene" uid="uid://5my308li5xxk" path="res://Scenes/Car/car.tscn" id="2_pxpxv"]
+[ext_resource type="PackedScene" uid="uid://bifrc78o528gb" path="res://Scenes/Track/destination.tscn" id="3_mie5q"]
+[ext_resource type="PackedScene" uid="uid://ckuf0nyyb2cmj" path="res://Scenes/Fare/fare.tscn" id="4_ji2a5"]
+[ext_resource type="PackedScene" uid="uid://bakatx1f4pf1h" path="res://Scenes/Npc/path_2d_level2_1.tscn" id="5_mie5q"]
+[ext_resource type="PackedScene" uid="uid://5a5510db7wer" path="res://Scenes/Fuel_Station/fuel_station.tscn" id="5_p4u12"]
+[ext_resource type="PackedScene" uid="uid://dymnw8bqymmaj" path="res://Scenes/LevelFailed/level_failed.tscn" id="6_78tvu"]
+[ext_resource type="PackedScene" uid="uid://5yqax386jw5" path="res://Scenes/Npc/path_2d_level2_2.tscn" id="6_ji2a5"]
+[ext_resource type="PackedScene" uid="uid://bwbvrk4ld8s3p" path="res://Scenes/Pause/pause_menu.tscn" id="7_4rsl5"]
+[ext_resource type="PackedScene" uid="uid://djm6lu38ltfcp" path="res://Scenes/LevelComplete/level_complete.tscn" id="8_0smov"]
+[ext_resource type="PackedScene" uid="uid://dni5b6v03uei5" path="res://Scenes/TrafficLights/traffic_light.tscn" id="8_78tvu"]
+[ext_resource type="PackedScene" uid="uid://cr13lge72hp61" path="res://Scenes/Npc/path_2d_level2_3.tscn" id="8_smlcm"]
+[ext_resource type="PackedScene" uid="uid://f8dm83qpc18r" path="res://Scenes/TrafficLights/detection_zone.tscn" id="9_0smov"]
+[ext_resource type="PackedScene" uid="uid://dkd4icabncgha" path="res://Scenes/TrafficLights/traffic_light_controller.tscn" id="9_4rsl5"]
+[ext_resource type="PackedScene" uid="uid://bngrcvtxfnqax" path="res://Scenes/TrafficLights/npctl_detection_zone.tscn" id="10_5j2yh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5j2yh"]
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smlcm"]
+bg_color = Color(0.9101666, 0.13967285, 5.7756904e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0fs1"]
+bg_color = Color(0.06666667, 0.49411765, 0.03529412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wralo"]
+font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Level-2" type="Node" unique_id=849949632]
+script = ExtResource("1_smlcm")
+
+[node name="Level-2" parent="." unique_id=394875054 instance=ExtResource("1_kkuso")]
+
+[node name="Car" parent="." unique_id=430111989 instance=ExtResource("2_pxpxv")]
+position = Vector2(754.99994, -4224.0005)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+collision_mask = 3
+drift_factor = 0.5
+
+[node name="HUD" type="CanvasLayer" parent="Car" unique_id=1889062870]
+
+[node name="TimerLabel" type="Label" parent="Car/HUD" unique_id=345551149]
+offset_left = 8.0
+offset_right = 138.0
+offset_bottom = 45.0
+label_settings = SubResource("LabelSettings_5j2yh")
+metadata/_edit_use_anchors_ = true
+
+[node name="FuelBar" type="ProgressBar" parent="Car/HUD" unique_id=874535256]
+offset_left = 184.0
+offset_top = 56.0
+offset_right = 199.89182
+offset_bottom = 151.26617
+rotation = 1.5707964
+theme_override_styles/background = SubResource("StyleBoxFlat_smlcm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b0fs1")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="WarningLabel" type="Label" parent="Car/HUD" unique_id=334428069]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -481.5
+offset_top = -201.0
+offset_right = 481.5
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_wralo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FuelLabel" type="Label" parent="Car/HUD" unique_id=1512110773]
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 138.0
+offset_bottom = 85.0
+text = "Fuel:"
+label_settings = SubResource("LabelSettings_5j2yh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Destination" parent="." unique_id=1397616143 instance=ExtResource("3_mie5q")]
+position = Vector2(1145, -16882)
+rotation = 4.712389
+passenger_scale = Vector2(0.3, 0.3)
+
+[node name="Passengers" type="Node2D" parent="." unique_id=1877582174]
+position = Vector2(0, 99)
+
+[node name="Fare" parent="Passengers" unique_id=1056091125 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("4_ji2a5")]
+position = Vector2(1163.0001, -4452)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+possible_destinations = [NodePath("../../Destination")]
+
+[node name="Fare2" parent="Passengers" unique_id=690933933 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("4_ji2a5")]
+position = Vector2(1163.0001, -4473)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+possible_destinations = [NodePath("../../Destination")]
+
+[node name="Fare3" parent="Passengers" unique_id=634836066 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("4_ji2a5")]
+position = Vector2(1163.0001, -4493)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+possible_destinations = [NodePath("../../Destination")]
+
+[node name="Fare4" parent="Passengers" unique_id=1159001198 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("4_ji2a5")]
+position = Vector2(1163.0001, -4513)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+possible_destinations = [NodePath("../../Destination")]
+
+[node name="NPC-Route-1" parent="." unique_id=1364236216 instance=ExtResource("5_mie5q")]
+
+[node name="NPC-Route-2" parent="." unique_id=1990943370 instance=ExtResource("6_ji2a5")]
+
+[node name="NPC-Route-3" parent="." unique_id=1466156831 instance=ExtResource("8_smlcm")]
+
+[node name="Fuel_Station" parent="." unique_id=1144419310 instance=ExtResource("5_p4u12")]
+position = Vector2(6496, -22123)
+
+[node name="TrafficLights" type="Node2D" parent="." unique_id=1695029158]
+
+[node name="Lights" type="Node2D" parent="TrafficLights" unique_id=694240719]
+
+[node name="TL1" parent="TrafficLights/Lights" unique_id=164515164 groups=["traffic_ns"] instance=ExtResource("8_78tvu")]
+position = Vector2(8240, -21778)
+rotation = 1.5707964
+
+[node name="TL2" parent="TrafficLights/Lights" unique_id=1491637189 groups=["traffic_ew"] instance=ExtResource("8_78tvu")]
+position = Vector2(8266, -21986)
+
+[node name="TL3" parent="TrafficLights/Lights" unique_id=496515853 groups=["traffic_ew"] instance=ExtResource("8_78tvu")]
+position = Vector2(7962, -21796)
+rotation = 3.1415927
+
+[node name="TL4" parent="TrafficLights/Lights" unique_id=2145580382 groups=["traffic_ns"] instance=ExtResource("8_78tvu")]
+position = Vector2(4816, -21777)
+rotation = 1.5707964
+
+[node name="TL5" parent="TrafficLights/Lights" unique_id=346816631 groups=["traffic_ew"] instance=ExtResource("8_78tvu")]
+position = Vector2(4854, -21986)
+
+[node name="TL6" parent="TrafficLights/Lights" unique_id=1429774 groups=["traffic_ew"] instance=ExtResource("8_78tvu")]
+position = Vector2(4559, -21796)
+rotation = 3.1415927
+
+[node name="TL7" parent="TrafficLights/Lights" unique_id=776983264 groups=["traffic_ew"] instance=ExtResource("8_78tvu")]
+position = Vector2(431, -15252)
+
+[node name="TL8" parent="TrafficLights/Lights" unique_id=769796990 groups=["traffic_ns"] instance=ExtResource("8_78tvu")]
+position = Vector2(201, -15255)
+rotation = 4.712389
+
+[node name="TL9" parent="TrafficLights/Lights" unique_id=1653174465 groups=["traffic_ns"] instance=ExtResource("8_78tvu")]
+position = Vector2(4967, -7891)
+rotation = 3.1415927
+
+[node name="TL10" parent="TrafficLights/Lights" unique_id=430937455 groups=["traffic_ew"] instance=ExtResource("8_78tvu")]
+position = Vector2(5188, -8082)
+
+[node name="DetectionZones" type="Node2D" parent="TrafficLights" unique_id=1343960647]
+
+[node name="DZ1" parent="TrafficLights/DetectionZones" unique_id=738278024 node_paths=PackedStringArray("traffic_light") instance=ExtResource("9_0smov")]
+position = Vector2(8142, -21891)
+traffic_light = NodePath("../../Lights/TL1")
+
+[node name="DZ2" parent="TrafficLights/DetectionZones" unique_id=784551547 node_paths=PackedStringArray("traffic_light") instance=ExtResource("9_0smov")]
+position = Vector2(4719, -21890)
+traffic_light = NodePath("../../Lights/TL5")
+
+[node name="DZ3" parent="TrafficLights/DetectionZones" unique_id=284070522 node_paths=PackedStringArray("traffic_light") instance=ExtResource("9_0smov")]
+position = Vector2(305, -15159)
+traffic_light = NodePath("../../Lights/TL7")
+
+[node name="DZ4" parent="TrafficLights/DetectionZones" unique_id=1981236347 node_paths=PackedStringArray("traffic_light") instance=ExtResource("9_0smov")]
+position = Vector2(5077, -7988)
+traffic_light = NodePath("../../Lights/TL9")
+
+[node name="NDZ1" parent="TrafficLights/DetectionZones" unique_id=1535428411 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("10_5j2yh")]
+position = Vector2(8177, -21749)
+traffic_light_npc = NodePath("../../Lights/TL1")
+
+[node name="NDZ2" parent="TrafficLights/DetectionZones" unique_id=1948704929 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("10_5j2yh")]
+position = Vector2(7990, -21857)
+rotation = 4.712389
+traffic_light_npc = NodePath("../../Lights/TL3")
+
+[node name="NDZ3" parent="TrafficLights/DetectionZones" unique_id=508518228 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("10_5j2yh")]
+position = Vector2(4871, -21929)
+rotation = 1.5707964
+traffic_light_npc = NodePath("../../Lights/TL5")
+
+[node name="NDZ4" parent="TrafficLights/DetectionZones" unique_id=1063739074 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("10_5j2yh")]
+position = Vector2(4757, -21745)
+traffic_light_npc = NodePath("../../Lights/TL4")
+
+[node name="NDZ5" parent="TrafficLights/DetectionZones" unique_id=1844640597 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("10_5j2yh")]
+position = Vector2(265, -15307)
+traffic_light_npc = NodePath("../../Lights/TL8")
+
+[node name="NDZ6" parent="TrafficLights/DetectionZones" unique_id=1312654215 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("10_5j2yh")]
+position = Vector2(466, -15195)
+rotation = 1.5707964
+traffic_light_npc = NodePath("../../Lights/TL7")
+
+[node name="NDZ7" parent="TrafficLights/DetectionZones" unique_id=737243021 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("10_5j2yh")]
+position = Vector2(4923, -7952)
+rotation = 4.712389
+traffic_light_npc = NodePath("../../Lights/TL9")
+
+[node name="NDZ8" parent="TrafficLights/DetectionZones" unique_id=471255819 node_paths=PackedStringArray("traffic_light_npc") instance=ExtResource("10_5j2yh")]
+position = Vector2(5230, -8028)
+rotation = 1.5707964
+traffic_light_npc = NodePath("../../Lights/TL10")
+
+[node name="TrafficLightController" parent="." unique_id=1945327216 instance=ExtResource("9_4rsl5")]
+
+[node name="FailedLayer" type="CanvasLayer" parent="." unique_id=295740120]
+
+[node name="LevelFailed" parent="FailedLayer" unique_id=1616606214 instance=ExtResource("6_78tvu")]
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1069061593]
+
+[node name="PauseMenu" parent="PauseLayer" unique_id=200864461 instance=ExtResource("7_4rsl5")]
+
+[node name="CompleteLayer" type="CanvasLayer" parent="." unique_id=1889044980]
+
+[node name="LevelComplete" parent="CompleteLayer" unique_id=1549744258 instance=ExtResource("8_0smov")]

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://8wrn2lfqbctq"]
+
+[ext_resource type="Texture2D" uid="uid://ctddqoynsm3go" path="res://Assets/Images/Sprites/route_map.png" id="1_1bexg"]
+[ext_resource type="Script" uid="uid://6jy3aqur016g" path="res://Scripts/route_mapUI.gd" id="1_5jdwi"]
+
+[node name="RouteMap" type="CanvasLayer" unique_id=103809363]
+process_mode = 1
+script = ExtResource("1_5jdwi")
+
+[node name="RouteMapUI" type="TextureRect" parent="." unique_id=1295600173]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.00002
+offset_top = 86.00001
+offset_right = 143.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_1bexg")
+stretch_mode = 5

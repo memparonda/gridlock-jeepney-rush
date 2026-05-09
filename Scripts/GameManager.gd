@@ -7,6 +7,7 @@ var game_over := false
 var is_paused := false
 var can_pause := true
 var tutorial_shown: bool = false
+var next_level_scene: String = ""
 
 func toggle_pause():
 	is_paused = !is_paused

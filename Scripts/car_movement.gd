@@ -25,13 +25,13 @@ extends CharacterBody2D
 @export var min_pitch := 1.0
 @export var max_pitch := 1.8
 @export var pitch_smoothness := 5.0
-@export var gear_speeds := [0.0, 50.0, 120.0, 200.0, 300.0] # speed thresholds
+@export var gear_speeds := [0.0, 100.0, 150.0, 200.0, 300.0] # speed thresholds
 @export var max_gears := 4
 @export var rpm_response := 2.0   # how fast RPM reacts
 
 # --- NEW: Fuel System ---
 @export var max_fuel: float = 100.0
-@export var fuel_drain_rate: float = 1.0 
+@export var fuel_drain_rate: float = 0.5 
 @export var refuel_rate: float = 25.0 # How fast it fills per second (takes 4 seconds to full)
 var current_fuel: float = max_fuel
 var is_refueling := false # Tracks if we are parked at a pump
@@ -89,6 +89,9 @@ func play_vehicle_crash():
 func handle_collision():
 	var time_penalty = 2.0
 	current_time = max(current_time - time_penalty, 0)
+	
+	# --- NEW: Trigger the visual flash! ---
+	flash_timer_red()
 
 func _physics_process(delta):
 	var input_forward = Input.get_action_strength("accelerate")
@@ -302,7 +305,7 @@ func stop_refueling():
 
 # --- NEW: Late Warning Dialogue ---
 func show_late_warning():
-	if has_node("HUD/WarningLabel"):
+	if has_node("HUD/WarningLabel") and current_passengers.size() > 0:
 		var warning_label = $HUD/WarningLabel
 		warning_label.text = "We're about to be late!"
 		warning_label.visible = true
@@ -312,3 +315,17 @@ func show_late_warning():
 		
 		# Hide the text again
 		warning_label.visible = false
+
+# --- NEW: UI Feedback ---
+func flash_timer_red():
+	if has_node("HUD/TimerLabel"):
+		var timer_label = $HUD/TimerLabel
+		
+		# Create a new Tween specifically for this label
+		var tween = create_tween()
+		
+		# Step 1: Instantly turn it RED (takes 0.05 seconds)
+		tween.tween_property(timer_label, "modulate", Color.RED, 0.05)
+		
+		# Step 2: Smoothly fade it back to WHITE (takes 0.4 seconds)
+		tween.tween_property(timer_label, "modulate", Color.WHITE, 0.4)

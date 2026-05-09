@@ -78,5 +78,6 @@ label_settings = SubResource("LabelSettings_2vpbu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="LevelCompleteButtons/Next" to="." method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="LevelCompleteButtons/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="LevelCompleteButtons/MainMenu" to="." method="_on_main_menu_pressed"]

@@ -34,5 +34,7 @@ func _process(_delta):
 				player_ref.current_time -= 10
 				print("🚨 Ran a red light! -10 seconds")
 				penalty_applied = true
-	
-	
+				# --- NEW: Trigger the UI Flash! ---
+				if player_ref.has_method("flash_timer_red"):
+					player_ref.flash_timer_red()
+				# ----------------------------------

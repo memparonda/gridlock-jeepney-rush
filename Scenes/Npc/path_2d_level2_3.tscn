@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cr13lge72hp61"]
+
+[ext_resource type="Script" uid="uid://5dr1tkwgwuqa" path="res://Scripts/npc_spawn_script.gd" id="1_3oitc"]
+
+[sub_resource type="Curve2D" id="Curve2D_vn21k"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 262, -18955, 0, 0, 0, 0, 262, -15230, -24.597658, -29.68683, 24.597658, 29.68683, 292, -15142, 0, 0, 0, 0, 422, -15118, 0, 0, 0, 0, 4641, -15116, -22.539442, 35.516697, 22.539442, -35.516697, 4739, -15150, 0, 0, 0, 0, 4759, -15234, 0, 0, 0, 0, 4750, -21785, -31.38322, 17.388, 31.38322, -17.388, 4782, -21855, 0, 0, 0, 0, 4862, -21869, 0, 0, 0, 0, 7999, -21870, -38.16878, -22.47717, 38.16878, 22.47717, 8082, -21852, 0, 0, 0, 0, 8116, -21785, 0, 0, 0, 0, 8115, -8121, 18.506073, -27.373566, -18.506073, 27.373566, 8098, -8051, 0, 0, 0, 0, 8040, -8021, 0, 0, 0, 0, 1309, -8019)
+}
+point_count = 17
+
+[node name="path_2d_level_2_3" type="Node2D" unique_id=1466156831]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=962297052]
+curve = SubResource("Curve2D_vn21k")
+script = ExtResource("1_3oitc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=513630622]
+position = Vector2(262, -18955)
+rotation = 1.5707964
