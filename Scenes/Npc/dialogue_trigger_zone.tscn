@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dhhs17d56tqpt"]
 
 [ext_resource type="Script" uid="uid://woqlv6h1haeh" path="res://Scripts/dialogue_trigger_zone.gd" id="1_b51nf"]
-[ext_resource type="AudioStream" uid="uid://ognlp2atnrqm" path="res://Assets/Audios/rightfoot8bit.mp3" id="2_1p5l6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_348p5"]
 size = Vector2(242, 150)
@@ -12,11 +11,5 @@ script = ExtResource("1_b51nf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=160413993]
 position = Vector2(111, 65)
 shape = SubResource("RectangleShape2D_348p5")
-
-[node name="Chatter" type="AudioStreamPlayer2D" parent="." unique_id=1490872399]
-stream = ExtResource("2_1p5l6")
-volume_db = -10.4
-pitch_scale = 0.5
-parameters/looping = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

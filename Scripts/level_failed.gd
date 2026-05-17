@@ -26,6 +26,7 @@ func _on_restart_pressed():
 	GameManager.game_over = false
 	GameManager.can_pause = true
 	GameManager.is_paused = false
+	DialogueOverlay.force_close()
 	get_tree().paused = false
 	AudioController.level_failed_sound.stop()
 	await get_tree().process_frame
@@ -36,6 +37,7 @@ func _on_main_menu_pressed():
 	GameManager.game_over = false
 	GameManager.can_pause = false
 	GameManager.is_paused = false
+	DialogueOverlay.force_close()
 	get_tree().paused = false
 	AudioController.stop_level_music(1.0)
 	AudioController.level_failed_sound.stop()

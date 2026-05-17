@@ -3,7 +3,6 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	AudioController.play_menu_music()
-	GameManager.can_pause = false
 	get_tree().paused = false  # 🔥 reset pause just in case
 	
 func _on_play_pressed() -> void:

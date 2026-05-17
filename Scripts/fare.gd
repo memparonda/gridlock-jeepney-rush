@@ -1,5 +1,14 @@
 extends Area2D
 
+# This lets your groupmate type a custom greeting in the Inspector!
+@export_multiline var greeting_text: String = ""
+
+# This lets them drag-and-drop a unique face for this specific stop
+@export var portrait: Texture2D
+
+# This lets them drag-and-drop a unique voice
+@export var voice_audio: AudioStream
+
 @export var possible_destinations: Array[Area2D] 
 var my_destination: Area2D
 @onready var sprite = $Sprite2D 
@@ -50,7 +59,8 @@ func start_pickup(body: Node2D):
 	tween.tween_property(sprite, "global_position", body.global_position, walk_duration)
 	
 	tween.finished.connect(func():
-		body.pick_up(my_destination)
+		# --- THE FIX: Pass 'self' and 'my_destination' ---
+		body.pick_up(self, my_destination)
 		queue_free()
 	)
 	

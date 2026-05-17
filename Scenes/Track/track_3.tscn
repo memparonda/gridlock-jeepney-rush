@@ -1,0 +1,261 @@
+[gd_scene format=3 uid="uid://bg5c18kdt78yf"]
+
+[ext_resource type="Script" uid="uid://dyjq2g583ka7e" path="res://Scripts/level-3.gd" id="1_343g7"]
+[ext_resource type="PackedScene" uid="uid://dv7b6li5f04ef" path="res://Scenes/Map/map2.tscn" id="1_qn8xd"]
+[ext_resource type="PackedScene" uid="uid://5my308li5xxk" path="res://Scenes/Car/car.tscn" id="2_nlu42"]
+[ext_resource type="PackedScene" uid="uid://bifrc78o528gb" path="res://Scenes/Track/destination.tscn" id="3_a5fdj"]
+[ext_resource type="PackedScene" uid="uid://ckuf0nyyb2cmj" path="res://Scenes/Fare/fare.tscn" id="4_r8aef"]
+[ext_resource type="PackedScene" uid="uid://5a5510db7wer" path="res://Scenes/Fuel_Station/fuel_station.tscn" id="5_a5fdj"]
+[ext_resource type="PackedScene" uid="uid://f8jangi2s014" path="res://Scenes/Npc/path_2d_level3_1.tscn" id="5_nb0xi"]
+[ext_resource type="PackedScene" uid="uid://b2s0mem3sja87" path="res://Scenes/Npc/path_2d_level3_2.tscn" id="6_343g7"]
+[ext_resource type="PackedScene" uid="uid://dymnw8bqymmaj" path="res://Scenes/LevelFailed/level_failed.tscn" id="6_cv8u3"]
+[ext_resource type="Texture2D" uid="uid://bqak5kk7olf20" path="res://Assets/Images/Sprites/passenger_level_3.png" id="6_soao2"]
+[ext_resource type="PackedScene" uid="uid://bwbvrk4ld8s3p" path="res://Scenes/Pause/pause_menu.tscn" id="7_k31mi"]
+[ext_resource type="AudioStream" uid="uid://cx8bqu6vf4w8k" path="res://Assets/Audios/universfield-new-notification-08-352461.mp3" id="7_scxf7"]
+[ext_resource type="PackedScene" uid="uid://djm6lu38ltfcp" path="res://Scenes/LevelComplete/level_complete.tscn" id="8_nb0xi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ljukt"]
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cv8u3"]
+bg_color = Color(0.9101666, 0.13967285, 5.7756904e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k31mi"]
+bg_color = Color(0.06666667, 0.49411765, 0.03529412, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5fdj"]
+size = Vector2(288, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8aef"]
+size = Vector2(256, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljukt"]
+size = Vector2(304, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cv8u3"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k31mi"]
+size = Vector2(304, 80)
+
+[node name="Track3" type="Node" unique_id=1563743033]
+script = ExtResource("1_343g7")
+
+[node name="Node2D" parent="." unique_id=1024027294 instance=ExtResource("1_qn8xd")]
+
+[node name="Car" parent="." unique_id=430111989 instance=ExtResource("2_nlu42")]
+position = Vector2(755.00006, -16722)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+collision_mask = 3
+drift_factor = 0.5
+total_time = 270.0
+late_warning_text = "I'm gonna miss the appointment!"
+late_warning_portrait = ExtResource("6_soao2")
+late_warning_audio = ExtResource("7_scxf7")
+
+[node name="HUD" type="CanvasLayer" parent="Car" unique_id=1114619538]
+
+[node name="TimerLabel" type="Label" parent="Car/HUD" unique_id=738579929]
+offset_left = 8.0
+offset_right = 138.0
+offset_bottom = 45.0
+label_settings = SubResource("LabelSettings_ljukt")
+metadata/_edit_use_anchors_ = true
+
+[node name="FuelBar" type="ProgressBar" parent="Car/HUD" unique_id=26261566]
+offset_left = 184.0
+offset_top = 56.0
+offset_right = 199.89182
+offset_bottom = 151.26617
+rotation = 1.5707964
+theme_override_styles/background = SubResource("StyleBoxFlat_cv8u3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k31mi")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="FuelLabel" type="Label" parent="Car/HUD" unique_id=842768038]
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 138.0
+offset_bottom = 85.0
+text = "Fuel:"
+label_settings = SubResource("LabelSettings_ljukt")
+metadata/_edit_use_anchors_ = true
+
+[node name="Destination" parent="." unique_id=1397616143 instance=ExtResource("3_a5fdj")]
+position = Vector2(1146, -11626)
+rotation = 4.712389
+passenger_scale = Vector2(0.3, 0.3)
+
+[node name="Passengers" type="Node2D" parent="." unique_id=753118712]
+position = Vector2(5, -12385)
+
+[node name="Fare" parent="Passengers" unique_id=1056091125 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("4_r8aef")]
+position = Vector2(1163.0001, -4452)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+greeting_text = "Let's go, Manong. My appointment's in ten minutes."
+portrait = ExtResource("6_soao2")
+voice_audio = ExtResource("7_scxf7")
+possible_destinations = [NodePath("../../Destination")]
+
+[node name="Fare2" parent="Passengers" unique_id=557269287 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("4_r8aef")]
+position = Vector2(1163.0001, -4473)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+possible_destinations = [NodePath("../../Destination")]
+
+[node name="Fare3" parent="Passengers" unique_id=876099293 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("4_r8aef")]
+position = Vector2(1163.0001, -4493)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+possible_destinations = [NodePath("../../Destination")]
+
+[node name="Fare4" parent="Passengers" unique_id=471376673 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("4_r8aef")]
+position = Vector2(1163.0001, -4513)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+possible_destinations = [NodePath("../../Destination")]
+
+[node name="NPC-Route-1" parent="." unique_id=1382851488 instance=ExtResource("5_nb0xi")]
+
+[node name="NPC-Route-2" parent="." unique_id=290540048 instance=ExtResource("6_343g7")]
+
+[node name="FuelStations" type="Node2D" parent="." unique_id=1271113887]
+
+[node name="Fuel_Station" parent="FuelStations" unique_id=1144419310 instance=ExtResource("5_a5fdj")]
+position = Vector2(6495, -22077)
+
+[node name="Fuel_Station2" parent="FuelStations" unique_id=1947399723 instance=ExtResource("5_a5fdj")]
+position = Vector2(23451, -20632)
+rotation = 1.5707964
+
+[node name="Fuel_Station3" parent="FuelStations" unique_id=230462328 instance=ExtResource("5_a5fdj")]
+position = Vector2(20003, -10261)
+rotation = 3.1415927
+
+[node name="SandArea" type="Area2D" parent="." unique_id=1652455093]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SandArea" unique_id=677265300]
+position = Vector2(3768, -10467)
+shape = SubResource("RectangleShape2D_a5fdj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SandArea" unique_id=1195339194]
+position = Vector2(4376, -10403)
+shape = SubResource("RectangleShape2D_r8aef")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="SandArea" unique_id=1007477515]
+position = Vector2(4888, -10467)
+shape = SubResource("RectangleShape2D_a5fdj")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="SandArea" unique_id=1100353785]
+position = Vector2(5440, -10403)
+shape = SubResource("RectangleShape2D_ljukt")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="SandArea" unique_id=1789832955]
+position = Vector2(6160, -10467)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="SandArea" unique_id=948865769]
+position = Vector2(14096, -10403)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="SandArea" unique_id=960560251]
+position = Vector2(11704, -10403)
+shape = SubResource("RectangleShape2D_a5fdj")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="SandArea" unique_id=864211204]
+position = Vector2(12824, -10403)
+shape = SubResource("RectangleShape2D_a5fdj")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="SandArea" unique_id=310177159]
+position = Vector2(12312, -10467)
+shape = SubResource("RectangleShape2D_r8aef")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="SandArea" unique_id=1399076416]
+position = Vector2(13376, -10467)
+shape = SubResource("RectangleShape2D_k31mi")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="SandArea" unique_id=1507662813]
+position = Vector2(23280, -11507)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="SandArea" unique_id=42381644]
+position = Vector2(23216, -12115)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="SandArea" unique_id=625243613]
+position = Vector2(23280, -12691)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="SandArea" unique_id=1630448392]
+position = Vector2(23216, -13187)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="SandArea" unique_id=1836342694]
+position = Vector2(23280, -15491)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D25" type="CollisionShape2D" parent="SandArea" unique_id=921030351]
+position = Vector2(23216, -16115)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D28" type="CollisionShape2D" parent="SandArea" unique_id=897708575]
+position = Vector2(23280, -16691)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D31" type="CollisionShape2D" parent="SandArea" unique_id=52431638]
+position = Vector2(23216, -17203)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D33" type="CollisionShape2D" parent="SandArea" unique_id=682240977]
+position = Vector2(23216, -21843)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D34" type="CollisionShape2D" parent="SandArea" unique_id=873559243]
+position = Vector2(16880, -21923)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D35" type="CollisionShape2D" parent="SandArea" unique_id=830749423]
+position = Vector2(16608, -21859)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D36" type="CollisionShape2D" parent="SandArea" unique_id=1146301211]
+position = Vector2(16016, -21859)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D37" type="CollisionShape2D" parent="SandArea" unique_id=1757576295]
+position = Vector2(15648, -21923)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D38" type="CollisionShape2D" parent="SandArea" unique_id=2010784765]
+position = Vector2(14352, -21923)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D39" type="CollisionShape2D" parent="SandArea" unique_id=200441738]
+position = Vector2(13936, -21859)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D40" type="CollisionShape2D" parent="SandArea" unique_id=1468100846]
+position = Vector2(13568, -21923)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="CollisionShape2D41" type="CollisionShape2D" parent="SandArea" unique_id=779282580]
+position = Vector2(13264, -21859)
+shape = SubResource("RectangleShape2D_cv8u3")
+
+[node name="FailedLayer" type="CanvasLayer" parent="." unique_id=1261710554]
+
+[node name="LevelFailed" parent="FailedLayer" unique_id=1616606214 instance=ExtResource("6_cv8u3")]
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1134222890]
+
+[node name="PauseMenu" parent="PauseLayer" unique_id=1453969873 instance=ExtResource("7_k31mi")]
+
+[node name="CompleteLayer" type="CanvasLayer" parent="." unique_id=396970286]
+
+[node name="LevelComplete" parent="CompleteLayer" unique_id=14670958 instance=ExtResource("8_nb0xi")]

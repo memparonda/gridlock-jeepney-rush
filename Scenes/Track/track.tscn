@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://hw14egxivkvg" path="res://Scenes/Map/map.tscn" id="1_wo0x4"]
 [ext_resource type="PackedScene" uid="uid://5my308li5xxk" path="res://Scenes/Car/car.tscn" id="3_ldns5"]
 [ext_resource type="PackedScene" uid="uid://bifrc78o528gb" path="res://Scenes/Track/destination.tscn" id="5_bwi5r"]
+[ext_resource type="Texture2D" uid="uid://clmqgf42i76x7" path="res://Assets/Images/Sprites/passenger_level_1.png" id="6_8tt1e"]
 [ext_resource type="PackedScene" uid="uid://ckuf0nyyb2cmj" path="res://Scenes/Fare/fare.tscn" id="6_ycsi2"]
+[ext_resource type="AudioStream" uid="uid://cx8bqu6vf4w8k" path="res://Assets/Audios/universfield-new-notification-08-352461.mp3" id="7_s24fl"]
 [ext_resource type="PackedScene" uid="uid://dbioq7qllnvsr" path="res://Scenes/Npc/path_2d.tscn" id="8_cqobo"]
 [ext_resource type="PackedScene" uid="uid://5a5510db7wer" path="res://Scenes/Fuel_Station/fuel_station.tscn" id="8_ir4jo"]
 [ext_resource type="PackedScene" uid="uid://e1s4sdjiijji" path="res://Scenes/Npc/scenery_dialogue_1.tscn" id="9_ywxya"]
@@ -15,12 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://f8dm83qpc18r" path="res://Scenes/TrafficLights/detection_zone.tscn" id="13_n6iga"]
 [ext_resource type="PackedScene" uid="uid://dkd4icabncgha" path="res://Scenes/TrafficLights/traffic_light_controller.tscn" id="15_wkqia"]
 [ext_resource type="PackedScene" uid="uid://dhhs17d56tqpt" path="res://Scenes/Npc/dialogue_trigger_zone.tscn" id="16_wv2yh"]
-[ext_resource type="PackedScene" uid="uid://h0hc6iqp6bn8" path="res://Scenes/Npc/dialogue_trigger_zone2.tscn" id="17_swdrr"]
 [ext_resource type="PackedScene" uid="uid://dymnw8bqymmaj" path="res://Scenes/LevelFailed/level_failed.tscn" id="18_wa53l"]
 [ext_resource type="PackedScene" uid="uid://bwbvrk4ld8s3p" path="res://Scenes/Pause/pause_menu.tscn" id="18_wxoal"]
 [ext_resource type="PackedScene" uid="uid://djm6lu38ltfcp" path="res://Scenes/LevelComplete/level_complete.tscn" id="19_vxeeh"]
 [ext_resource type="PackedScene" uid="uid://c0pmlemw3eui1" path="res://Scenes/TutorialOverlay/tutorial_overlay.tscn" id="20_wa53l"]
 [ext_resource type="PackedScene" uid="uid://8wrn2lfqbctq" path="res://Scenes/RouteMap/open_routemap.tscn" id="21_67upd"]
+[ext_resource type="Script" uid="uid://bcp34wju8hjkv" path="res://Scripts/tutorial_overlay.gd" id="22_p7ah4"]
+[ext_resource type="PackedScene" uid="uid://iv7n1q2yah1b" path="res://Scenes/TutorialOverlay/tutorial_overlay_2.tscn" id="24_3kjwm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ldns5"]
 font_size = 32
@@ -32,11 +35,6 @@ bg_color = Color(0.9101666, 0.13967285, 5.7756904e-07, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67upd"]
 bg_color = Color(0.06666667, 0.49411765, 0.03529412, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_67upd"]
-font_size = 25
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
 
 [node name="Level-1" type="Node" unique_id=1172744317]
 script = ExtResource("1_wkqia")
@@ -50,6 +48,9 @@ rotation = -1.5777614
 scale = Vector2(1.5000001, 1.5000001)
 collision_mask = 3
 drift_factor = 0.5
+late_warning_text = "I think I'm going to be late for school, Manong."
+late_warning_portrait = ExtResource("6_8tt1e")
+late_warning_audio = ExtResource("7_s24fl")
 
 [node name="HUD" type="CanvasLayer" parent="Car" unique_id=1535369585]
 
@@ -72,22 +73,6 @@ value = 100.0
 fill_mode = 3
 show_percentage = false
 
-[node name="WarningLabel" type="Label" parent="Car/HUD" unique_id=734610582]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -481.5
-offset_top = -201.0
-offset_right = 481.5
-offset_bottom = -124.0
-grow_horizontal = 2
-grow_vertical = 0
-label_settings = SubResource("LabelSettings_67upd")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="FuelLabel" type="Label" parent="Car/HUD" unique_id=411359743]
 offset_left = 8.0
 offset_top = 40.0
@@ -107,6 +92,9 @@ passenger_scale = Vector2(0.3, 0.3)
 position = Vector2(3694.0002, -4587)
 rotation = -1.5707964
 scale = Vector2(1.5, 1.5)
+greeting_text = "Good morning, Manong! Thanks for the lift."
+portrait = ExtResource("6_8tt1e")
+voice_audio = ExtResource("7_s24fl")
 possible_destinations = [NodePath("../../Destination")]
 
 [node name="Fare2" parent="Passengers" unique_id=1056091125 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("6_ycsi2")]
@@ -327,14 +315,17 @@ traffic_light = NodePath("../../Lights/TL8")
 position = Vector2(13838, -5304)
 traffic_light = NodePath("../../Lights/TL9")
 
-[node name="TrafficLightController" parent="." unique_id=1945327216 instance=ExtResource("15_wkqia")]
+[node name="DialogueZones" type="Node2D" parent="." unique_id=651510491]
 
-[node name="DialogueTriggerZone" parent="." unique_id=1292944438 instance=ExtResource("16_wv2yh")]
+[node name="DialogueTriggerZone" parent="DialogueZones" unique_id=1292944438 instance=ExtResource("16_wv2yh")]
 position = Vector2(4713, -3586)
+dialogue_text = "Good thinking, Manong! Not much congestion here."
 
-[node name="DialogueTriggerZone2" parent="." unique_id=1339048853 instance=ExtResource("17_swdrr")]
-position = Vector2(4623, -3388)
-rotation = 1.5707964
+[node name="DialogueTriggerZone2" parent="DialogueZones" unique_id=106739607 instance=ExtResource("16_wv2yh")]
+position = Vector2(4448, -3395)
+dialogue_text = "Manong, I think going through here is a bad idea."
+
+[node name="TrafficLightController" parent="." unique_id=1945327216 instance=ExtResource("15_wkqia")]
 
 [node name="RouteMap" parent="." unique_id=103809363 instance=ExtResource("21_67upd")]
 
@@ -351,5 +342,9 @@ rotation = 1.5707964
 [node name="LevelComplete" parent="CompleteLayer" unique_id=405235507 instance=ExtResource("19_vxeeh")]
 
 [node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=619799756]
+process_mode = 3
+script = ExtResource("22_p7ah4")
 
 [node name="TutorialOverlay" parent="TutorialLayer" unique_id=2080283185 instance=ExtResource("20_wa53l")]
+
+[node name="TutorialOverlay2" parent="TutorialLayer" unique_id=603023635 instance=ExtResource("24_3kjwm")]

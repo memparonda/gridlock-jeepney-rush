@@ -53,6 +53,7 @@ func _on_resume_pressed() -> void:
 
 func _on_restart_pressed():
 	GameManager.is_paused = false
+	DialogueOverlay.force_close()
 	get_tree().paused = false
 	await get_tree().process_frame
 	get_tree().reload_current_scene()
@@ -60,5 +61,6 @@ func _on_restart_pressed():
 func _on_quit_pressed():
 	get_tree().paused = false
 	GameManager.is_paused = false
+	DialogueOverlay.force_close()
 	AudioController.stop_level_music(1.0)
 	get_tree().change_scene_to_file("res://Scenes/Main_Menu/main_menu.tscn")

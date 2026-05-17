@@ -8,14 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://bakatx1f4pf1h" path="res://Scenes/Npc/path_2d_level2_1.tscn" id="5_mie5q"]
 [ext_resource type="PackedScene" uid="uid://5a5510db7wer" path="res://Scenes/Fuel_Station/fuel_station.tscn" id="5_p4u12"]
 [ext_resource type="PackedScene" uid="uid://dymnw8bqymmaj" path="res://Scenes/LevelFailed/level_failed.tscn" id="6_78tvu"]
+[ext_resource type="Texture2D" uid="uid://dxxn5vavdubta" path="res://Assets/Images/Sprites/passenger_level_2.png" id="6_ir4jo"]
 [ext_resource type="PackedScene" uid="uid://5yqax386jw5" path="res://Scenes/Npc/path_2d_level2_2.tscn" id="6_ji2a5"]
 [ext_resource type="PackedScene" uid="uid://bwbvrk4ld8s3p" path="res://Scenes/Pause/pause_menu.tscn" id="7_4rsl5"]
+[ext_resource type="AudioStream" uid="uid://cx8bqu6vf4w8k" path="res://Assets/Audios/universfield-new-notification-08-352461.mp3" id="7_ujh48"]
 [ext_resource type="PackedScene" uid="uid://djm6lu38ltfcp" path="res://Scenes/LevelComplete/level_complete.tscn" id="8_0smov"]
 [ext_resource type="PackedScene" uid="uid://dni5b6v03uei5" path="res://Scenes/TrafficLights/traffic_light.tscn" id="8_78tvu"]
 [ext_resource type="PackedScene" uid="uid://cr13lge72hp61" path="res://Scenes/Npc/path_2d_level2_3.tscn" id="8_smlcm"]
 [ext_resource type="PackedScene" uid="uid://f8dm83qpc18r" path="res://Scenes/TrafficLights/detection_zone.tscn" id="9_0smov"]
 [ext_resource type="PackedScene" uid="uid://dkd4icabncgha" path="res://Scenes/TrafficLights/traffic_light_controller.tscn" id="9_4rsl5"]
 [ext_resource type="PackedScene" uid="uid://bngrcvtxfnqax" path="res://Scenes/TrafficLights/npctl_detection_zone.tscn" id="10_5j2yh"]
+[ext_resource type="Script" uid="uid://b6vne3a7gw7vp" path="res://Scripts/sand_area.gd" id="10_b0fs1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5j2yh"]
 font_size = 32
@@ -28,10 +31,14 @@ bg_color = Color(0.9101666, 0.13967285, 5.7756904e-07, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0fs1"]
 bg_color = Color(0.06666667, 0.49411765, 0.03529412, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_wralo"]
-font_size = 25
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wralo"]
+size = Vector2(62, 766)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir4jo"]
+size = Vector2(16, 366)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0fs1"]
+size = Vector2(64, 80)
 
 [node name="Level-2" type="Node" unique_id=849949632]
 script = ExtResource("1_smlcm")
@@ -44,6 +51,9 @@ rotation = 1.5707964
 scale = Vector2(1.5, 1.5)
 collision_mask = 3
 drift_factor = 0.5
+late_warning_text = "The line on the supermarket's going to be long, Iho."
+late_warning_portrait = ExtResource("6_ir4jo")
+late_warning_audio = ExtResource("7_ujh48")
 
 [node name="HUD" type="CanvasLayer" parent="Car" unique_id=1889062870]
 
@@ -66,22 +76,6 @@ value = 100.0
 fill_mode = 3
 show_percentage = false
 
-[node name="WarningLabel" type="Label" parent="Car/HUD" unique_id=334428069]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -481.5
-offset_top = -201.0
-offset_right = 481.5
-offset_bottom = -124.0
-grow_horizontal = 2
-grow_vertical = 0
-label_settings = SubResource("LabelSettings_wralo")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="FuelLabel" type="Label" parent="Car/HUD" unique_id=1512110773]
 offset_left = 8.0
 offset_top = 40.0
@@ -103,6 +97,9 @@ position = Vector2(0, 99)
 position = Vector2(1163.0001, -4452)
 rotation = 1.5707964
 scale = Vector2(1.5, 1.5)
+greeting_text = "Salamat, Iho! Bring me to the northern terminal so I can buy my groceries."
+portrait = ExtResource("6_ir4jo")
+voice_audio = ExtResource("7_ujh48")
 possible_destinations = [NodePath("../../Destination")]
 
 [node name="Fare2" parent="Passengers" unique_id=690933933 node_paths=PackedStringArray("possible_destinations") instance=ExtResource("4_ji2a5")]
@@ -131,6 +128,21 @@ possible_destinations = [NodePath("../../Destination")]
 
 [node name="Fuel_Station" parent="." unique_id=1144419310 instance=ExtResource("5_p4u12")]
 position = Vector2(6496, -22123)
+
+[node name="SandArea" type="Area2D" parent="." unique_id=172626243]
+script = ExtResource("10_b0fs1")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="SandArea" unique_id=1681972948]
+position = Vector2(359, -8380)
+shape = SubResource("RectangleShape2D_wralo")
+
+[node name="CollisionShape2" type="CollisionShape2D" parent="SandArea" unique_id=1354731337]
+position = Vector2(320, -8180)
+shape = SubResource("RectangleShape2D_ir4jo")
+
+[node name="CollisionShape3" type="CollisionShape2D" parent="SandArea" unique_id=2087695323]
+position = Vector2(344, -6275)
+shape = SubResource("RectangleShape2D_b0fs1")
 
 [node name="TrafficLights" type="Node2D" parent="." unique_id=1695029158]
 
@@ -240,3 +252,6 @@ traffic_light_npc = NodePath("../../Lights/TL10")
 [node name="CompleteLayer" type="CanvasLayer" parent="." unique_id=1889044980]
 
 [node name="LevelComplete" parent="CompleteLayer" unique_id=1549744258 instance=ExtResource("8_0smov")]
+
+[connection signal="body_entered" from="SandArea" to="SandArea" method="_on_body_entered"]
+[connection signal="body_exited" from="SandArea" to="SandArea" method="_on_body_exited"]

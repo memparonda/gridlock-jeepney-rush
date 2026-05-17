@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://iv7n1q2yah1b"]
+
+[ext_resource type="Texture2D" uid="uid://bmto8twes3sv7" path="res://Assets/Images/Icons/tutorial_controls_2.png" id="1_btd0y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oaxpc"]
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="tutorial_overlay2" type="Control" unique_id=603023635]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1015281876]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_btd0y")
+expand_mode = 1
+
+[node name="TutorialText" type="Label" parent="." unique_id=545081001]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 288.0
+offset_right = 288.0
+offset_bottom = 311.0
+text = "SHOW MAP"
+label_settings = SubResource("LabelSettings_oaxpc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1519855618]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.19607843)

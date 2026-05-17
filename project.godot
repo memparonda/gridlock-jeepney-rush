@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Gridlock-Jeepney-Rush-Alpha-4.4.1"
+config/name="Gridlock-Jeepney-Rush-Alpha-4.5.1"
 run/main_scene="uid://c8j6ymmpbr5pm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Assets/Images/Icons/icon.svg"
@@ -25,6 +25,7 @@ DialogueManager="*res://Scripts/DialogueManager.gd"
 GameManager="*res://Scripts/GameManager.gd"
 AudioController="*uid://ccie5eb18b5ia"
 SceneTransition="*uid://b3bp2pxaiimco"
+DialogueOverlay="*uid://c3g8p286n6flg"
 
 [display]
 

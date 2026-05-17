@@ -22,6 +22,11 @@ extends CharacterBody2D
 @export var camera_smoothness: float = 5.0
 # ----------------------------
 
+@export_group("Late Warning Settings")
+@export_multiline var late_warning_text: String = ""
+@export var late_warning_portrait: Texture2D
+@export var late_warning_audio: AudioStream
+
 @export var min_pitch := 1.0
 @export var max_pitch := 1.8
 @export var pitch_smoothness := 5.0
@@ -42,7 +47,7 @@ var gear_shift_cooldown := 0.0
 var engine_rpm := 0.0
 
 var current_passengers: Array[Area2D] = []
-var current_time: float = total_time
+var current_time: float
 var has_penalized_this_frame: bool = false
 
 var speed: float = 0.0
@@ -54,8 +59,19 @@ var timer_active := true
 signal jeepney_stopped(jeepney_node)
 var was_moving := false
 
+# --- NEW: Terrain Modifiers ---
+var active_sand_zones: int = 0
+var original_max_speed: float = 0.0
+var original_acceleration: float = 0.0
+var original_friction: float = 0.0
+
 func start_engine_sequence():
 	engine_startup.play()
+	
+	# --- NEW: Save the default driving stats! ---
+	original_max_speed = max_speed
+	original_acceleration = acceleration
+	original_friction = friction
 
 	var length = engine_startup.stream.get_length()
 	var overlap = 0.2
@@ -73,6 +89,8 @@ func start_engine_sequence():
 	tween.parallel().tween_property(engine_startup, "volume_db", -20, overlap)
 
 func _ready():
+	current_time = total_time
+	
 	start_engine_sequence()
 	
 # --- NEW: Detach camera rotation from the Jeepney body ---
@@ -233,10 +251,21 @@ func has_empty_seats() -> bool:
 	return current_passengers.size() < max_capacity
 
 # Passenger Pick-up
-func pick_up(destination: Area2D):
+func pick_up(fare: Node, destination: Area2D):
 	if has_empty_seats():
 		current_passengers.append(destination)
 		had_passengers = true
+		
+# --- NEW: Ask the destination for its unique details! ---
+		# We use the .get() function. If the variable exists, it grabs it. 
+		# If it doesn't exist, it safely returns 'null' without crashing!
+		var face = fare.get("portrait")
+		var audio = fare.get("voice_audio")
+		var greeting = fare.get("greeting_text")
+		
+		# --- THE FIX: Only talk if they actually have custom data! ---
+		if (greeting != null and greeting != "") or face != null:
+			DialogueOverlay.show_dialogue(greeting, face, audio)
 		
 		# --- NEW: Build a text list of all current destinations ---
 		var destination_names = ""
@@ -305,16 +334,10 @@ func stop_refueling():
 
 # --- NEW: Late Warning Dialogue ---
 func show_late_warning():
-	if has_node("HUD/WarningLabel") and current_passengers.size() > 0:
-		var warning_label = $HUD/WarningLabel
-		warning_label.text = "We're about to be late!"
-		warning_label.visible = true
-		
-		# Wait for 3 seconds without freezing the game
-		await get_tree().create_timer(3.0).timeout
-		
-		# Hide the text again
-		warning_label.visible = false
+	if current_passengers.size() > 0:
+		# Delete your old Label update code and use this:
+		var panic_audio = preload("res://Assets/Audios/universfield-new-notification-08-352461.mp3")
+		DialogueOverlay.show_dialogue(late_warning_text, late_warning_portrait, late_warning_audio)
 
 # --- NEW: UI Feedback ---
 func flash_timer_red():
@@ -329,3 +352,23 @@ func flash_timer_red():
 		
 		# Step 2: Smoothly fade it back to WHITE (takes 0.4 seconds)
 		tween.tween_property(timer_label, "modulate", Color.WHITE, 0.4)
+
+# --- NEW: Terrain Handling ---
+func apply_sand_effect(is_entering: bool):
+	if is_entering:
+		active_sand_zones += 1
+	else:
+		active_sand_zones -= 1
+		# Safety net to ensure it never goes below 0
+		active_sand_zones = max(0, active_sand_zones) 
+
+	if active_sand_zones > 0:
+		# SLUDGE MODE: Lower speed, lower acceleration, high friction
+		max_speed = original_max_speed * 0.4
+		acceleration = original_acceleration * 0.6
+		friction = original_friction * 2.0
+	else:
+		# BACK ON THE ROAD: Restore original stats
+		max_speed = original_max_speed
+		acceleration = original_acceleration
+		friction = original_friction

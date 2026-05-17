@@ -1,45 +1,21 @@
 extends Area2D
 
-@export var dialogue_text: Array[String] = [
-	"Not much traffic here, but I hope you can get us there on time."
-]
+# @export_multiline gives you a nice big text box in the Godot Inspector!
+@export_multiline var dialogue_text: String = "Enter route message here..."
+@export var audio_clip = preload("res://Assets/Audios/universfield-new-notification-08-352461.mp3")
+@export var npc_portrait = preload("res://Assets/Images/Sprites/passenger_level_1.png")
+# Prevents the message from spamming if the Jeepney reverses over the line
+@export var trigger_once: bool = true 
+var has_triggered: bool = false
 
-@onready var sound = $Chatter
-
-var triggered := false
-
-func play_dialogue_sequence() -> void:
-
-	for line in dialogue_text:
-		if GameManager.game_over:
-			break
-
-		DialogueManager.say(line)
-
-		var wait_time = get_read_time(line)
-		await get_tree().create_timer(wait_time).timeout
-
-	# ✅ Dialogue is finished → STOP sound
-	sound.stop()
-
-func get_read_time(text: String) -> float:
-	var base_time = 1.5  # minimum time
-	var char_time = 0.05 # seconds per character
-	
-	return max(base_time, text.length() * char_time)
-
-func _on_body_entered(body) :
-	if triggered:
-		print("[Dialogue Trigger Zone] Entered by:", body.name)
-		return
-
-	if body.name == "Car":
-		if body.current_passengers.size() > 0:
-			triggered = true
-			play_dialogue_sequence()
-			sound.play()
+func _on_body_entered(body):
+	# 1. Ensure it's the Jeepney
+	if body.is_in_group("Player") and body.current_passengers.size() > 0:
+		
+		# 2. Check if it's already been fired
+		if trigger_once and has_triggered:
 			return
 			
-func _process(delta):
-	if GameManager.game_over and sound and sound.playing:
-		sound.stop()
+		# 3. Lock it and call your Global Dialogue Manager!
+		has_triggered = true
+		DialogueOverlay.show_dialogue(dialogue_text, npc_portrait, audio_clip)

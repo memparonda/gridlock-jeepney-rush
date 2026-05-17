@@ -1,53 +1,64 @@
-extends Control # Change this if your root node is a Panel, TextureRect, etc.
+extends CanvasLayer
+
+# Grab both pages
+@onready var page_1 = $TutorialOverlay
+@onready var page_2 = $TutorialOverlay2
 
 func _ready():
-	
-	# --- NEW: Check if we already saw the tutorial ---
+	# 1. Check if they already saw it
 	if GameManager.tutorial_shown:
-		hide()         # Make sure it's invisible
-		queue_free()   # Delete the overlay entirely from the scene
-		return         # CRITICAL: Stop reading the rest of this function!
-	
-	# If we made it here, it means we haven't seen it yet! Mark it as seen:
+		hide()
+		queue_free()
+		return
+		
 	GameManager.tutorial_shown = true
-	# ----
 
-	# 1. Instantly pause the entire game the moment the level loads
+	# 2. Lock the pause menu and freeze the game
+	GameManager.can_pause = false
 	get_tree().paused = true
 	
-	# Ensure the overlay is fully visible to start
-	modulate.a = 1.0
+	# 3. Setup initial visibility (Page 1 visible, Page 2 invisible)
+	page_1.modulate.a = 1.0
+	page_2.modulate.a = 0.0
+	page_1.show()
+	page_2.show()
 	show()
 	
-	# --- NEW: Find the player and hide their HUD ---
+	# Hide the HUD if it exists
 	var player = get_tree().get_first_node_in_group("Player")
 	if player and player.has_node("HUD"):
 		player.get_node("HUD").visible = false
-	# -----------------------------------------------
 
-	# 2. Create a Tween to handle the timer and the fade animation
+	# 4. Start the Sequence!
+	play_tutorial_sequence()
+
+func play_tutorial_sequence():
 	var tween = create_tween()
 	
-	# 3. Step One of Tween: Wait for exactly 2.0 seconds
+	# --- PAGE 1 ---
+	# Hold Page 1 on screen for 2 seconds
 	tween.tween_interval(2.0)
+	# Fade Page 1 OUT (Takes 0.5 seconds)
+	tween.tween_property(page_1, "modulate:a", 0.0, 0.5)
 	
-	# 4. Step Two of Tween: Fade the alpha (modulate:a) to 0.0 over 0.5 seconds
-	tween.tween_property(self, "modulate:a", 0.0, 0.5)
+	# --- PAGE 2 ---
+	# Fade Page 2 IN (Takes 0.5 seconds)
+	tween.tween_property(page_2, "modulate:a", 1.0, 0.5)
+	# Hold Page 2 on screen for 2 seconds
+	tween.tween_interval(2.0)
+	# Fade Page 2 OUT (Takes 0.5 seconds)
+	tween.tween_property(page_2, "modulate:a", 0.0, 0.5)
 	
-	# 5. Wait for the entire Tween sequence (wait + fade) to finish completely
+	# Wait for the entire sequence to finish
 	await tween.finished
 	
-	# 6. Unpause the game and let the Jeepney drive!
-	get_tree().paused = false
-	
-	# --- NEW: Show the HUD again when the tutorial ends ---
+	# --- FINISH & CLEANUP ---
+	var player = get_tree().get_first_node_in_group("Player")
 	if player and player.has_node("HUD"):
 		player.get_node("HUD").visible = true
-	# ------------------------------------------------------
+		
+	get_tree().paused = false
+	GameManager.can_pause = true
 	
-	# 7. Hide the overlay so it doesn't block any mouse clicks on the screen
 	hide()
-	
-	# Optional: If this tutorial only happens once per level, you can delete it 
-	# from memory completely by uncommenting the line below:
-	# queue_free()
+	queue_free()
