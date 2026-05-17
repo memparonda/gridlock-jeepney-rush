@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://8wrn2lfqbctq" path="res://Scenes/RouteMap/open_routemap.tscn" id="21_67upd"]
 [ext_resource type="Script" uid="uid://bcp34wju8hjkv" path="res://Scripts/tutorial_overlay.gd" id="22_p7ah4"]
 [ext_resource type="PackedScene" uid="uid://iv7n1q2yah1b" path="res://Scenes/TutorialOverlay/tutorial_overlay_2.tscn" id="24_3kjwm"]
+[ext_resource type="PackedScene" uid="uid://pi6w163h06w0" path="res://Scenes/TutorialOverlay/tutorial_overlay_3.tscn" id="25_3kjwm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ldns5"]
 font_size = 32
@@ -348,3 +349,5 @@ script = ExtResource("22_p7ah4")
 [node name="TutorialOverlay" parent="TutorialLayer" unique_id=2080283185 instance=ExtResource("20_wa53l")]
 
 [node name="TutorialOverlay2" parent="TutorialLayer" unique_id=603023635 instance=ExtResource("24_3kjwm")]
+
+[node name="TutorialOverlay3" parent="TutorialLayer" unique_id=1554495092 instance=ExtResource("25_3kjwm")]

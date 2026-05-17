@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://pi6w163h06w0"]
+
+[ext_resource type="Texture2D" uid="uid://744qjd2byly1" path="res://Assets/Images/Icons/tutorial_controls_3.png" id="1_lmieh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_amvg4"]
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="TutorialOverlay3" type="Control" unique_id=1554495092]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TutorialText" type="Label" parent="." unique_id=628404721]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 440.0
+offset_right = 863.0
+offset_bottom = 489.0
+text = "FOLLOW TRAFFIC LIGHTS. ALWAYS REFER TO THE RIGHT TRAFFIC LIGHT
+RELATIVE TO YOUR JEEPNEY."
+label_settings = SubResource("LabelSettings_amvg4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1510888420]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.19607843)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1783598993]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_lmieh")
+expand_mode = 1

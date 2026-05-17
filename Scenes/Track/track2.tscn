@@ -184,6 +184,10 @@ rotation = 3.1415927
 [node name="TL10" parent="TrafficLights/Lights" unique_id=430937455 groups=["traffic_ew"] instance=ExtResource("8_78tvu")]
 position = Vector2(5188, -8082)
 
+[node name="TL11" parent="TrafficLights/Lights" unique_id=1255294305 groups=["traffic_ew"] instance=ExtResource("8_78tvu")]
+position = Vector2(418, -15045)
+rotation = 1.5707964
+
 [node name="DetectionZones" type="Node2D" parent="TrafficLights" unique_id=1343960647]
 
 [node name="DZ1" parent="TrafficLights/DetectionZones" unique_id=738278024 node_paths=PackedStringArray("traffic_light") instance=ExtResource("9_0smov")]

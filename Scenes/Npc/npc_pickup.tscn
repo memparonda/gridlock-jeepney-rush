@@ -31,3 +31,4 @@ target_position = Vector2(50, 0)
 stream = ExtResource("3_2uq72")
 volume_db = -16.0
 max_distance = 500.0
+bus = &"SFX"

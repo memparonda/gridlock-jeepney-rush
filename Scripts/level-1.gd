@@ -12,4 +12,4 @@ func _process(_delta):
 	if GameManager.game_over and not music_stopped:
 		music_stopped = true
 		AudioController.stop_level_music(1.5)  # fade out
-		DialogueManager.force_close()
+		DialogueOverlay.force_close()

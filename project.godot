@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Gridlock-Jeepney-Rush-Alpha-4.5.1"
+config/name="Gridlock-Jeepney-Rush-Alpha-4.5.2"
 run/main_scene="uid://c8j6ymmpbr5pm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Assets/Images/Icons/icon.svg"

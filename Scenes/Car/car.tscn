@@ -28,13 +28,16 @@ zoom = Vector2(1.6, 1.6)
 [node name="EngineSound" type="AudioStreamPlayer2D" parent="." unique_id=1305348226]
 stream = ExtResource("3_nkh8f")
 volume_db = -25.0
+bus = &"SFX"
 parameters/looping = true
 
 [node name="EngineStartup" type="AudioStreamPlayer2D" parent="." unique_id=895448024]
 stream = ExtResource("4_afscr")
 volume_db = -20.0
+bus = &"SFX"
 
 [node name="VehicleCrash" type="AudioStreamPlayer2D" parent="." unique_id=970673232]
 stream = ExtResource("5_nkh8f")
 volume_db = -16.0
 max_distance = 500.0
+bus = &"SFX"

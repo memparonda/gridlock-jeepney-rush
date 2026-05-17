@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://b5xe11quqhg2t"]
+
+[ext_resource type="Script" uid="uid://gandacvlh20r" path="res://Scripts/settings_menu.gd" id="1_r3on5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r3on5"]
+font_size = 42
+
+[node name="SettingsMenu" type="CanvasLayer" unique_id=1570275366]
+script = ExtResource("1_r3on5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1196874888]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.48235294)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1706463585]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.75
+offset_top = -185.0
+offset_right = 170.75
+offset_bottom = 185.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Settings" type="Label" parent="ColorRect/VBoxContainer" unique_id=890080431]
+layout_mode = 2
+text = "SETTINGS
+"
+label_settings = SubResource("LabelSettings_r3on5")
+
+[node name="MusicVolume" type="Label" parent="ColorRect/VBoxContainer" unique_id=1134558714]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="ColorRect/VBoxContainer" unique_id=171237997]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SFXVolume" type="Label" parent="ColorRect/VBoxContainer" unique_id=1859429090]
+layout_mode = 2
+text = "Sound Effects"
+
+[node name="SFXSlider" type="HSlider" parent="ColorRect/VBoxContainer" unique_id=1083640242]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Close" type="Button" parent="ColorRect/VBoxContainer" unique_id=1147219256]
+layout_mode = 2
+text = "Close"
+
+[connection signal="value_changed" from="ColorRect/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Close" to="." method="_on_close_button_pressed"]
