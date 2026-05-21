@@ -13,12 +13,15 @@
 [ext_resource type="PackedScene" uid="uid://bwbvrk4ld8s3p" path="res://Scenes/Pause/pause_menu.tscn" id="7_4rsl5"]
 [ext_resource type="AudioStream" uid="uid://cx8bqu6vf4w8k" path="res://Assets/Audios/universfield-new-notification-08-352461.mp3" id="7_ujh48"]
 [ext_resource type="PackedScene" uid="uid://djm6lu38ltfcp" path="res://Scenes/LevelComplete/level_complete.tscn" id="8_0smov"]
+[ext_resource type="PackedScene" uid="uid://dhhs17d56tqpt" path="res://Scenes/Npc/dialogue_trigger_zone.tscn" id="8_6ji0h"]
 [ext_resource type="PackedScene" uid="uid://dni5b6v03uei5" path="res://Scenes/TrafficLights/traffic_light.tscn" id="8_78tvu"]
 [ext_resource type="PackedScene" uid="uid://cr13lge72hp61" path="res://Scenes/Npc/path_2d_level2_3.tscn" id="8_smlcm"]
 [ext_resource type="PackedScene" uid="uid://f8dm83qpc18r" path="res://Scenes/TrafficLights/detection_zone.tscn" id="9_0smov"]
 [ext_resource type="PackedScene" uid="uid://dkd4icabncgha" path="res://Scenes/TrafficLights/traffic_light_controller.tscn" id="9_4rsl5"]
 [ext_resource type="PackedScene" uid="uid://bngrcvtxfnqax" path="res://Scenes/TrafficLights/npctl_detection_zone.tscn" id="10_5j2yh"]
 [ext_resource type="Script" uid="uid://b6vne3a7gw7vp" path="res://Scripts/sand_area.gd" id="10_b0fs1"]
+[ext_resource type="Script" uid="uid://6jy3aqur016g" path="res://Scripts/route_mapUI.gd" id="20_kuncu"]
+[ext_resource type="Texture2D" uid="uid://d35afm7tgbe7n" path="res://Assets/Images/Sprites/route_map2.png" id="20_ujh48"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5j2yh"]
 font_size = 32
@@ -46,11 +49,12 @@ script = ExtResource("1_smlcm")
 [node name="Level-2" parent="." unique_id=394875054 instance=ExtResource("1_kkuso")]
 
 [node name="Car" parent="." unique_id=430111989 instance=ExtResource("2_pxpxv")]
-position = Vector2(754.99994, -4224.0005)
+position = Vector2(752, -4225.0005)
 rotation = 1.5707964
 scale = Vector2(1.5, 1.5)
 collision_mask = 3
 drift_factor = 0.5
+total_time = 180.0
 late_warning_text = "The line on the supermarket's going to be long, Iho."
 late_warning_portrait = ExtResource("6_ir4jo")
 late_warning_audio = ExtResource("7_ujh48")
@@ -119,6 +123,49 @@ position = Vector2(1163.0001, -4513)
 rotation = 1.5707964
 scale = Vector2(1.5, 1.5)
 possible_destinations = [NodePath("../../Destination")]
+
+[node name="DialogueZones" type="Node2D" parent="." unique_id=1157071595]
+
+[node name="DialogueTriggerZone" parent="DialogueZones" unique_id=1292944438 instance=ExtResource("8_6ji0h")]
+position = Vector2(248, -8007)
+rotation = 4.712389
+dialogue_text = "Iho, I think that route's prohibited."
+npc_portrait = ExtResource("6_ir4jo")
+
+[node name="DialogueTriggerZone2" parent="DialogueZones" unique_id=249158962 instance=ExtResource("8_6ji0h")]
+position = Vector2(5016, -8075)
+rotation = 4.712389
+dialogue_text = "Drive carefully here, the street is narrow."
+npc_portrait = ExtResource("6_ir4jo")
+
+[node name="DialogueTriggerZone3" parent="DialogueZones" unique_id=2012870722 instance=ExtResource("8_6ji0h")]
+position = Vector2(227, -8759)
+rotation = 4.712389
+dialogue_text = "Is that your 'diskarte', Iho?"
+npc_portrait = ExtResource("6_ir4jo")
+
+[node name="DialogueTriggerZone4" parent="DialogueZones" unique_id=506637996 instance=ExtResource("8_6ji0h")]
+position = Vector2(8076, -7923)
+rotation = 4.712389
+dialogue_text = "This route's farther, but at least the traffic moves."
+npc_portrait = ExtResource("6_ir4jo")
+
+[node name="DialogueTriggerZone5" parent="DialogueZones" unique_id=1112795307 instance=ExtResource("8_6ji0h")]
+position = Vector2(4656, -21432)
+rotation = 4.712389
+dialogue_text = "How long have we've been on the road?"
+npc_portrait = ExtResource("6_ir4jo")
+
+[node name="DialogueTriggerZone6" parent="DialogueZones" unique_id=372111772 instance=ExtResource("8_6ji0h")]
+position = Vector2(555, -15221)
+dialogue_text = "Do you think I just got older?"
+npc_portrait = ExtResource("6_ir4jo")
+
+[node name="DialogueTriggerZone7" parent="DialogueZones" unique_id=632160245 instance=ExtResource("8_6ji0h")]
+position = Vector2(4188, -11954)
+rotation = 4.712389
+dialogue_text = "The nerve these people have to park on such a narrow road."
+npc_portrait = ExtResource("6_ir4jo")
 
 [node name="NPC-Route-1" parent="." unique_id=1364236216 instance=ExtResource("5_mie5q")]
 
@@ -256,6 +303,23 @@ traffic_light_npc = NodePath("../../Lights/TL10")
 [node name="CompleteLayer" type="CanvasLayer" parent="." unique_id=1889044980]
 
 [node name="LevelComplete" parent="CompleteLayer" unique_id=1549744258 instance=ExtResource("8_0smov")]
+
+[node name="RouteMap" type="CanvasLayer" parent="." unique_id=1295543508]
+script = ExtResource("20_kuncu")
+
+[node name="RouteMapUI" type="TextureRect" parent="RouteMap" unique_id=1354577390]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.00002
+offset_top = 86.00001
+offset_right = 143.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("20_ujh48")
+stretch_mode = 5
 
 [connection signal="body_entered" from="SandArea" to="SandArea" method="_on_body_entered"]
 [connection signal="body_exited" from="SandArea" to="SandArea" method="_on_body_exited"]

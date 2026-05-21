@@ -336,7 +336,6 @@ func stop_refueling():
 func show_late_warning():
 	if current_passengers.size() > 0:
 		# Delete your old Label update code and use this:
-		var panic_audio = preload("res://Assets/Audios/universfield-new-notification-08-352461.mp3")
 		DialogueOverlay.show_dialogue(late_warning_text, late_warning_portrait, late_warning_audio)
 
 # --- NEW: UI Feedback ---

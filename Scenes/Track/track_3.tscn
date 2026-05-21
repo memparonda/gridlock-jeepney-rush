@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://bwbvrk4ld8s3p" path="res://Scenes/Pause/pause_menu.tscn" id="7_k31mi"]
 [ext_resource type="AudioStream" uid="uid://cx8bqu6vf4w8k" path="res://Assets/Audios/universfield-new-notification-08-352461.mp3" id="7_scxf7"]
 [ext_resource type="PackedScene" uid="uid://djm6lu38ltfcp" path="res://Scenes/LevelComplete/level_complete.tscn" id="8_nb0xi"]
+[ext_resource type="PackedScene" uid="uid://dhhs17d56tqpt" path="res://Scenes/Npc/dialogue_trigger_zone.tscn" id="8_tor7c"]
+[ext_resource type="Script" uid="uid://6jy3aqur016g" path="res://Scripts/route_mapUI.gd" id="14_0yhwf"]
+[ext_resource type="Texture2D" uid="uid://8i5u7c3vk0a4" path="res://Assets/Images/Sprites/route_map3.png" id="14_scxf7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ljukt"]
 font_size = 32
@@ -51,7 +54,7 @@ rotation = 1.5707964
 scale = Vector2(1.5, 1.5)
 collision_mask = 3
 drift_factor = 0.5
-total_time = 300.0
+total_time = 360.0
 late_warning_text = "I'm gonna miss the appointment!"
 late_warning_portrait = ExtResource("6_soao2")
 late_warning_audio = ExtResource("7_scxf7")
@@ -120,6 +123,57 @@ position = Vector2(1163.0001, -4513)
 rotation = 1.5707964
 scale = Vector2(1.5, 1.5)
 possible_destinations = [NodePath("../../Destination")]
+
+[node name="DialogueZones" type="Node2D" parent="." unique_id=2025152464]
+
+[node name="DialogueTriggerZone" parent="DialogueZones" unique_id=1292944438 instance=ExtResource("8_tor7c")]
+position = Vector2(5882, -10511)
+dialogue_text = "Parang awa mo na, Lord!"
+npc_portrait = ExtResource("6_soao2")
+
+[node name="DialogueTriggerZone2" parent="DialogueZones" unique_id=149928906 instance=ExtResource("8_tor7c")]
+position = Vector2(405, -10503)
+dialogue_text = "I definitely won't be looking forward to the commute home."
+npc_portrait = ExtResource("6_soao2")
+
+[node name="DialogueTriggerZone3" parent="DialogueZones" unique_id=1754018138 instance=ExtResource("8_tor7c")]
+position = Vector2(14180, -10501)
+dialogue_text = "Watch, they'll repair this road again after a year."
+npc_portrait = ExtResource("6_soao2")
+
+[node name="DialogueTriggerZone4" parent="DialogueZones" unique_id=1877665510 instance=ExtResource("8_tor7c")]
+position = Vector2(23318, -11456)
+rotation = 1.5707964
+dialogue_text = "I might already have grandkids and this road's still not done."
+npc_portrait = ExtResource("6_soao2")
+
+[node name="DialogueTriggerZone5" parent="DialogueZones" unique_id=1198334070 instance=ExtResource("8_tor7c")]
+position = Vector2(23317, -18467)
+rotation = 1.5707964
+dialogue_text = "No wonder so many people end up late."
+npc_portrait = ExtResource("6_soao2")
+
+[node name="DialogueTriggerZone6" parent="DialogueZones" unique_id=234609195 instance=ExtResource("8_tor7c")]
+position = Vector2(16977, -21958)
+dialogue_text = "More and more cars, but the roads doesn't seem to keep up."
+npc_portrait = ExtResource("6_soao2")
+
+[node name="DialogueTriggerZone7" parent="DialogueZones" unique_id=634584931 instance=ExtResource("8_tor7c")]
+position = Vector2(12942, -21955)
+dialogue_text = "Anak ng tinapay, the road is still not done until now."
+npc_portrait = ExtResource("6_soao2")
+
+[node name="DialogueTriggerZone8" parent="DialogueZones" unique_id=1907528202 instance=ExtResource("8_tor7c")]
+position = Vector2(375, -21805)
+rotation = 1.5707964
+dialogue_text = "This traffic might burn through more fuel."
+npc_portrait = ExtResource("6_soao2")
+
+[node name="DialogueTriggerZone9" parent="DialogueZones" unique_id=84639195 instance=ExtResource("8_tor7c")]
+position = Vector2(23312, -21472)
+rotation = 1.5707964
+dialogue_text = "Watch your fuel, Kuya."
+npc_portrait = ExtResource("6_soao2")
 
 [node name="NPC-Route-1" parent="." unique_id=1382851488 instance=ExtResource("5_nb0xi")]
 
@@ -259,3 +313,20 @@ shape = SubResource("RectangleShape2D_cv8u3")
 [node name="CompleteLayer" type="CanvasLayer" parent="." unique_id=396970286]
 
 [node name="LevelComplete" parent="CompleteLayer" unique_id=14670958 instance=ExtResource("8_nb0xi")]
+
+[node name="RouteMap" type="CanvasLayer" parent="." unique_id=1131958457]
+script = ExtResource("14_0yhwf")
+
+[node name="RouteMapUI" type="TextureRect" parent="RouteMap" unique_id=963926364]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.00002
+offset_top = 86.00001
+offset_right = 143.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("14_scxf7")
+stretch_mode = 5

@@ -326,6 +326,22 @@ dialogue_text = "Good thinking, Manong! Not much congestion here."
 position = Vector2(4448, -3395)
 dialogue_text = "Manong, I think going through here is a bad idea."
 
+[node name="DialogueTriggerZone3" parent="DialogueZones" unique_id=481273274 instance=ExtResource("16_wv2yh")]
+position = Vector2(4480, 1279)
+dialogue_text = "Grabe... It's like this every day. Heavy traffic in the morning."
+
+[node name="DialogueTriggerZone4" parent="DialogueZones" unique_id=199874846 instance=ExtResource("16_wv2yh")]
+position = Vector2(15374, -5367)
+dialogue_text = "Feels like I spent more time in the road than in class."
+
+[node name="DialogueTriggerZone5" parent="DialogueZones" unique_id=1700769387 instance=ExtResource("16_wv2yh")]
+position = Vector2(10671, 1282)
+dialogue_text = "That felt more stressful than class for some reason."
+
+[node name="DialogueTriggerZone6" parent="DialogueZones" unique_id=2080482117 instance=ExtResource("16_wv2yh")]
+position = Vector2(13939, 1281)
+dialogue_text = "One trip alone already wears you out."
+
 [node name="TrafficLightController" parent="." unique_id=1945327216 instance=ExtResource("15_wkqia")]
 
 [node name="RouteMap" parent="." unique_id=103809363 instance=ExtResource("21_67upd")]

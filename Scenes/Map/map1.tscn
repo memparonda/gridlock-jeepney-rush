@@ -1,6 +1,12 @@
 [gd_scene format=4 uid="uid://bxt65aigqdom7"]
 
 [ext_resource type="Texture2D" uid="uid://mxw46mfyfm4u" path="res://Assets/Images/Buildings/CP_V1.0.4.png" id="2_q80ld"]
+[ext_resource type="Texture2D" uid="uid://rysoebtp2wkv" path="res://Assets/Images/Sprites/car_sprite_1.png" id="5_4nmfs"]
+[ext_resource type="Texture2D" uid="uid://dm01t65x58lt6" path="res://Assets/Images/Sprites/pick_up_truck_sprite.png" id="6_lucih"]
+[ext_resource type="Texture2D" uid="uid://ba4dmn4b1yt" path="res://Assets/Images/Sprites/car_sprite_2.png" id="7_8q2mf"]
+[ext_resource type="Texture2D" uid="uid://deoowmjvrvmh0" path="res://Assets/Images/Sprites/car_sprite_4.png" id="8_34opm"]
+[ext_resource type="Texture2D" uid="uid://cct4bpaqsxqlu" path="res://Assets/Images/Sprites/truck_sprite_1.png" id="9_m1ssv"]
+[ext_resource type="Texture2D" uid="uid://87xrs1ss2kpk" path="res://Assets/Images/Buildings/road_arrow.png" id="10_lucih"]
 [ext_resource type="Texture2D" uid="uid://o74orhuo81ib" path="res://Assets/Images/Buildings/pickup_zone.png" id="22_20hkw"]
 [ext_resource type="Texture2D" uid="uid://c0h2qh87oibjv" path="res://Assets/Images/Buildings/refuel_zone.png" id="23_hfkrl"]
 [ext_resource type="Texture2D" uid="uid://bcihrumwi1pfb" path="res://Assets/Images/Buildings/drop_off_zone.png" id="24_t3yo7"]
@@ -683,7 +689,7 @@ collision_visibility_mode = 1
 [node name="road2" type="TileMapLayer" parent="." unique_id=428217268]
 z_index = 1
 position = Vector2(24, 21)
-tile_map_data = PackedByteArray("AAASAHn+AAAdAAgAAAATAHn+AAAdAAgAAAAUAHn+AAAdAAgAAAAVAHn+AAAdAAgAAAALADX+AAABABgAAAALADb+AAABABkAAAAMADX+AAACABgAAAAMADb+AAACABkAAAANADX+AAADABgAAAANADb+AAADABkAAAANADf+AAAdAAgAAAAOADX+AAAEABgAAAAOADb+AAAEABkAAAAOADf+AAAdAAgAAAAPADf+AAAdAAgAAAAQADf+AAAdAAgAAAASAC7+AAAIABgAAAASAC/+AAAIABkAAAASADD+AAAdAAgAAAATAC7+AAAJABgAAAATAC/+AAAJABkAAAATADD+AAAdAAgAAAAUAC7+AAAKABgAAAAUAC/+AAAKABkAAAAUADD+AAAdAAgAAAAVADD+AAAdAAgAAAANABT+AAAdAAgAAAAOABT+AAAdAAgAAAAPABT+AAAdAAgAAAAQABT+AAAdAAgAAAANABH+AAAdAAgAAAANABL+AAAdAAgAAAANABP+AAAdAAgAAAAOABH+AAAdAAgAAAAOABL+AAAdAAgAAAAOABP+AAAdAAgAAAAPABH+AAAdAAgAAAAPABL+AAAdAAgAAAAPABP+AAAdAAgAAAAQABH+AAAdAAgAAAAQABL+AAAdAAgAAAAQABP+AAAdAAgAAAANAA7+AAAdAAgAAAANAA/+AAAdAAgAAAANABD+AAAdAAgAAAAOAA7+AAAdAAgAAAAOAA/+AAAdAAgAAAAOABD+AAAdAAgAAAAPAA7+AAAdAAgAAAAPAA/+AAAdAAgAAAAPABD+AAAdAAgAAAAQAA7+AAAdAAgAAAAQAA/+AAAdAAgAAAAQABD+AAAdAAgAAAANAA3+AAAdAAgAAAAOAA3+AAAdAAgAAAAPAA3+AAAdAAgAAAAQAA3+AAAdAAgAAAANAAz+AAAdAAgAAAAOAAz+AAAdAAgAAAAPAAz+AAAdAAgAAAAQAAz+AAAdAAgAAAANAAv+AAAdAAgAAAAOAAv+AAAdAAgAAAAPAAv+AAAdAAgAAAAQAAv+AAAdAAgAAABJAAr+AAAVADEAAABJAAf+AAAVADAAAABIAAn+AAAVADAAAABJAAj+AAAVADIAAAAXAAn+AAAYACAAAAAXAAr+AAAYACEAAAAYAAn+AAAYACAAAAAYAAr+AAAYACEAAAAZAAn+AAAYACAAAAAZAAr+AAAYACEAAAAaAAn+AAAYACAAAAAaAAr+AAAYACEAAAAcAAn+AAAYACAAAAAcAAr+AAAYACEAAAAdAAn+AAAYACAAAAAdAAr+AAAYACEAAAAeAAn+AAAYACAAAAAeAAr+AAAYACEAAAAfAAn+AAAYACAAAAAfAAr+AAAYACEAAAAgAAn+AAAYACAAAAAgAAr+AAAYACEAAAAhAAn+AAAYACAAAAAhAAr+AAAYACEAAAAiAAn+AAAYACAAAAAiAAr+AAAYACEAAAAjAAr+AAAVADIAAAAkAAn+AAAYACAAAAAkAAr+AAAYACEAAAAlAAn+AAAYACAAAAAlAAr+AAAYACEAAAAmAAn+AAAYACAAAAAmAAr+AAAYACEAAAAnAAn+AAAYACAAAAAnAAr+AAAYACEAAAAoAAn+AAAYACAAAAAoAAr+AAAYACEAAAApAAn+AAAYACAAAAApAAr+AAAYACEAAAAqAAn+AAAVADIAAAArAAn+AAAYACAAAAArAAr+AAAYACEAAAAsAAn+AAAYACAAAAAsAAr+AAAYACEAAAAtAAn+AAAYACAAAAAtAAr+AAAYACEAAAAuAAn+AAAYACAAAAAuAAr+AAAYACEAAAAvAAn+AAAYACAAAAAvAAr+AAAYACEAAAAwAAr+AAAVADIAAAAxAAn+AAAYACAAAAAxAAr+AAAYACEAAAAyAAn+AAAYACAAAAAyAAr+AAAYACEAAAAzAAn+AAAYACAAAAAzAAr+AAAYACEAAAA0AAn+AAAYACAAAAA0AAr+AAAVADIAAAA1AAn+AAAVADIAAAA2AAn+AAAYACAAAAA2AAr+AAAYACEAAAA3AAn+AAAYACAAAAA3AAr+AAAYACEAAAA4AAn+AAAYACAAAAA4AAr+AAAYACEAAAA5AAn+AAAYACAAAAA5AAr+AAAVADIAAAA6AAn+AAAYACAAAAA6AAr+AAAYACEAAAA7AAn+AAAYACAAAAA7AAr+AAAYACEAAAA8AAn+AAAYACAAAAA8AAr+AAAYACEAAAA9AAn+AAAVADIAAAA+AAn+AAAYACAAAAA+AAr+AAAYACEAAAA/AAn+AAAYACAAAAA/AAr+AAAYACEAAABAAAn+AAAYACAAAABAAAr+AAAYACEAAABBAAr+AAAVADIAAABCAAn+AAAYACAAAABCAAr+AAAYACEAAABDAAn+AAAYACAAAABDAAr+AAAYACEAAABEAAn+AAAYACAAAABEAAr+AAAYACEAAABFAAn+AAAYACAAAABFAAr+AAAYACEAAABGAAn+AAAYACAAAABGAAr+AAAYACEAAABHAAn+AAAYACAAAABHAAr+AAAYACEAAAAbAAr+AAAVADEAAAAYAAj+AAAVADAAAAAqAAX+AAAVADAAAAAcAAX+AAAVADAAAAAvAAb+AAAVADAAAAA1AAb+AAAVADAAAAAiAAf+AAAVADAAAAAhAAf+AAAVADAAAAAmAAX+AAAVADAAAAAuAAj+AAAVADAAAAA7AAX+AAAVADAAAABAAAf+AAAVADAAAABEAAf+AAAVADAAAABDAAf+AAAVADAAAAA2AAf+AAAVADAAAAA3AAf+AAAVADAAAABDAAP+AAAVADAAAAA8AAf+AAAVADAAAAAaAAf+AAAVADAAAAA=")
+tile_map_data = PackedByteArray("AAASAHn+AAAdAAgAAAATAHn+AAAdAAgAAAAUAHn+AAAdAAgAAAAVAHn+AAAdAAgAAAALADX+AAABABgAAAALADb+AAABABkAAAAMADX+AAACABgAAAAMADb+AAACABkAAAANADX+AAADABgAAAANADb+AAADABkAAAANADf+AAAdAAgAAAAOADX+AAAEABgAAAAOADb+AAAEABkAAAAOADf+AAAdAAgAAAAPADf+AAAdAAgAAAAQADf+AAAdAAgAAAASAC7+AAAIABgAAAASAC/+AAAIABkAAAASADD+AAAdAAgAAAATAC7+AAAJABgAAAATAC/+AAAJABkAAAATADD+AAAdAAgAAAAUAC7+AAAKABgAAAAUAC/+AAAKABkAAAAUADD+AAAdAAgAAAAVADD+AAAdAAgAAAANABT+AAAdAAgAAAAOABT+AAAdAAgAAAAPABT+AAAdAAgAAAAQABT+AAAdAAgAAAANABH+AAAdAAgAAAANABL+AAAdAAgAAAANABP+AAAdAAgAAAAOABH+AAAdAAgAAAAOABL+AAAdAAgAAAAOABP+AAAdAAgAAAAPABH+AAAdAAgAAAAPABL+AAAdAAgAAAAPABP+AAAdAAgAAAAQABH+AAAdAAgAAAAQABL+AAAdAAgAAAAQABP+AAAdAAgAAAANAA7+AAAdAAgAAAANAA/+AAAdAAgAAAANABD+AAAdAAgAAAAOAA7+AAAdAAgAAAAOAA/+AAAdAAgAAAAOABD+AAAdAAgAAAAPAA7+AAAdAAgAAAAPAA/+AAAdAAgAAAAPABD+AAAdAAgAAAAQAA7+AAAdAAgAAAAQAA/+AAAdAAgAAAAQABD+AAAdAAgAAAANAA3+AAAdAAgAAAAOAA3+AAAdAAgAAAAPAA3+AAAdAAgAAAAQAA3+AAAdAAgAAAANAAz+AAAdAAgAAAAOAAz+AAAdAAgAAAAPAAz+AAAdAAgAAAAQAAz+AAAdAAgAAAANAAv+AAAdAAgAAAAOAAv+AAAdAAgAAAAPAAv+AAAdAAgAAAAQAAv+AAAdAAgAAABJAAr+AAAVADEAAABJAAf+AAAVADAAAABIAAn+AAAVADAAAABJAAj+AAAVADIAAAAXAAn+AAAYACAAAAAXAAr+AAAYACEAAAAYAAn+AAAYACAAAAAYAAr+AAAYACEAAAAZAAn+AAAYACAAAAAZAAr+AAAYACEAAAAaAAn+AAAYACAAAAAaAAr+AAAYACEAAAAcAAn+AAAYACAAAAAcAAr+AAAYACEAAAAdAAn+AAAYACAAAAAdAAr+AAAYACEAAAAeAAn+AAAYACAAAAAeAAr+AAAYACEAAAAfAAn+AAAYACAAAAAfAAr+AAAYACEAAAAgAAn+AAAYACAAAAAgAAr+AAAYACEAAAAhAAn+AAAYACAAAAAhAAr+AAAYACEAAAAiAAn+AAAYACAAAAAiAAr+AAAYACEAAAAjAAr+AAAVADIAAAAkAAn+AAAYACAAAAAkAAr+AAAYACEAAAAlAAn+AAAYACAAAAAlAAr+AAAYACEAAAAmAAn+AAAYACAAAAAmAAr+AAAYACEAAAAnAAn+AAAYACAAAAAnAAr+AAAYACEAAAAoAAn+AAAYACAAAAAoAAr+AAAYACEAAAApAAn+AAAYACAAAAApAAr+AAAYACEAAAAqAAn+AAAVADIAAAArAAn+AAAYACAAAAArAAr+AAAYACEAAAAsAAn+AAAYACAAAAAsAAr+AAAYACEAAAAtAAn+AAAYACAAAAAtAAr+AAAYACEAAAAuAAn+AAAYACAAAAAuAAr+AAAYACEAAAAvAAn+AAAYACAAAAAvAAr+AAAYACEAAAAwAAr+AAAVADIAAAAxAAn+AAAYACAAAAAxAAr+AAAYACEAAAAyAAn+AAAYACAAAAAyAAr+AAAYACEAAAAzAAn+AAAYACAAAAAzAAr+AAAYACEAAAA0AAn+AAAYACAAAAA0AAr+AAAVADIAAAA1AAn+AAAVADIAAAA2AAn+AAAYACAAAAA2AAr+AAAYACEAAAA3AAn+AAAYACAAAAA3AAr+AAAYACEAAAA4AAn+AAAYACAAAAA4AAr+AAAYACEAAAA5AAn+AAAYACAAAAA5AAr+AAAVADIAAAA6AAn+AAAYACAAAAA6AAr+AAAYACEAAAA7AAn+AAAYACAAAAA7AAr+AAAYACEAAAA8AAn+AAAYACAAAAA8AAr+AAAYACEAAAA9AAn+AAAVADIAAAA+AAn+AAAYACAAAAA+AAr+AAAYACEAAAA/AAn+AAAYACAAAAA/AAr+AAAYACEAAABAAAn+AAAYACAAAABAAAr+AAAYACEAAABBAAr+AAAVADIAAABCAAn+AAAYACAAAABCAAr+AAAYACEAAABDAAn+AAAYACAAAABDAAr+AAAYACEAAABEAAn+AAAYACAAAABEAAr+AAAYACEAAABFAAn+AAAYACAAAABFAAr+AAAYACEAAABGAAn+AAAYACAAAABGAAr+AAAYACEAAABHAAn+AAAYACAAAABHAAr+AAAYACEAAAAbAAr+AAAVADEAAAAYAAj+AAAVADAAAAAqAAX+AAAVADAAAAAcAAX+AAAVADAAAAAvAAb+AAAVADAAAAA1AAb+AAAVADAAAAAiAAf+AAAVADAAAAAhAAf+AAAVADAAAAAmAAX+AAAVADAAAAAuAAj+AAAVADAAAAA7AAX+AAAVADAAAABAAAf+AAAVADAAAABEAAf+AAAVADAAAABDAAf+AAAVADAAAAA2AAf+AAAVADAAAAA3AAf+AAAVADAAAABDAAP+AAAVADAAAAA8AAf+AAAVADAAAAAaAAf+AAAVADAAAAAbAaL6AAAfAAgAAAAbAaP6AAAfAAgAAAAbAaT6AAAfAAgAAAAbAaX6AAAfAAgAAAAbAab6AAAfAAgAAAAbAaf6AAAfAAgAAAAbAaj6AAAfAAgAAAAbAan6AAAfAAgAAAAbAar6AAAfAAgAAAAPAqL6AAAfAAgAAAAPAqP6AAAfAAgAAAAPAqT6AAAfAAgAAAAPAqX6AAAfAAgAAAAPAqb6AAAfAAgAAAAPAqf6AAAfAAgAAAAPAqj6AAAfAAgAAAAPAqn6AAAfAAgAAAAPAqr6AAAfAAgAAAA=")
 tile_set = SubResource("TileSet_urblq")
 collision_visibility_mode = 1
 
@@ -767,3 +773,131 @@ polygon = PackedVector2Array(1262, -4185, 1198, -4185, 1198, -4280, 1198, -4345,
 [node name="CollisionPolygon2D17" type="CollisionPolygon2D" parent="MapCollisions" unique_id=765165634]
 position = Vector2(-208, 0)
 polygon = PackedVector2Array(199, -3707, 199, -18952, 201, -18952, 201, -3707)
+
+[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="MapCollisions" unique_id=251844715]
+position = Vector2(-3, -6)
+polygon = PackedVector2Array(5119, -8204, 5143, -8204, 5143, -8158, 5119, -8158)
+
+[node name="CollisionPolygon2D19" type="CollisionPolygon2D" parent="MapCollisions" unique_id=1425291478]
+position = Vector2(-14, -2301)
+polygon = PackedVector2Array(5119, -8204, 5143, -8204, 5143, -8158, 5119, -8158)
+
+[node name="CollisionPolygon2D20" type="CollisionPolygon2D" parent="MapCollisions" unique_id=1215310417]
+position = Vector2(2192, -2463)
+polygon = PackedVector2Array(5119, -8204, 5143, -8204, 5143, -8158, 5119, -8158)
+
+[node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="MapCollisions" unique_id=1867971875]
+position = Vector2(-14, -2301)
+polygon = PackedVector2Array(5119, -8204, 5143, -8204, 5143, -8158, 5119, -8158)
+
+[node name="CollisionPolygon2D22" type="CollisionPolygon2D" parent="MapCollisions" unique_id=1916750159]
+position = Vector2(1186, -4014)
+polygon = PackedVector2Array(5116, -8197, 5162, -8197, 5162, -8173, 5116, -8173)
+
+[node name="CollisionPolygon2D23" type="CollisionPolygon2D" parent="MapCollisions" unique_id=823951890]
+position = Vector2(1186, -4014)
+polygon = PackedVector2Array(5451, -8270, 5493, -8270, 5493, -8248, 5451, -8248)
+
+[node name="CollisionPolygon2D24" type="CollisionPolygon2D" parent="MapCollisions" unique_id=1479692839]
+position = Vector2(-249, -2333)
+polygon = PackedVector2Array(5451, -8270, 5493, -8270, 5493, -8248, 5451, -8248)
+
+[node name="CollisionPolygon2D25" type="CollisionPolygon2D" parent="MapCollisions" unique_id=2143301831]
+position = Vector2(-421, -941)
+polygon = PackedVector2Array(5449, -8279, 5471, -8279, 5471, -8237, 5449, -8237)
+
+[node name="CollisionPolygon2D26" type="CollisionPolygon2D" parent="MapCollisions" unique_id=147491644]
+position = Vector2(-335, -1006)
+polygon = PackedVector2Array(5449, -8279, 5471, -8279, 5471, -8237, 5449, -8237)
+
+[node name="CollisionPolygon2D27" type="CollisionPolygon2D" parent="MapCollisions" unique_id=1509739413]
+position = Vector2(1790, -3845)
+polygon = PackedVector2Array(5449, -8279, 5471, -8279, 5471, -8237, 5449, -8237)
+
+[node name="CollisionPolygon2D28" type="CollisionPolygon2D" parent="MapCollisions" unique_id=318324947]
+position = Vector2(-1249, -1711)
+polygon = PackedVector2Array(5449, -8279, 5471, -8279, 5471, -8237, 5449, -8237)
+
+[node name="CollisionPolygon2D29" type="CollisionPolygon2D" parent="MapCollisions" unique_id=377110751]
+position = Vector2(-1177, -3718)
+polygon = PackedVector2Array(5446, -8361, 5474, -8361, 5474, -8237, 5446, -8237)
+
+[node name="dummy_cars" type="Node2D" parent="." unique_id=407409045]
+position = Vector2(1, 409)
+
+[node name="dummy_car3" type="Sprite2D" parent="dummy_cars" unique_id=868431399]
+position = Vector2(5037.9995, -9607)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_4nmfs")
+
+[node name="dummy_car4" type="Sprite2D" parent="dummy_cars" unique_id=1668036823]
+position = Vector2(5126.9995, -8597)
+rotation = 3.1415927
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_lucih")
+
+[node name="dummy_car5" type="Sprite2D" parent="dummy_cars" unique_id=413106181]
+position = Vector2(5123.9995, -9674)
+rotation = 3.1415927
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("7_8q2mf")
+
+[node name="dummy_car14" type="Sprite2D" parent="dummy_cars" unique_id=900827226]
+position = Vector2(7322, -11052)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_lucih")
+
+[node name="dummy_car19" type="Sprite2D" parent="dummy_cars" unique_id=132531312]
+position = Vector2(5115.9995, -10892)
+rotation = 3.1415927
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_lucih")
+
+[node name="dummy_car23" type="Sprite2D" parent="dummy_cars" unique_id=1032425747]
+position = Vector2(4210, -10379)
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_4nmfs")
+
+[node name="dummy_car26" type="Sprite2D" parent="dummy_cars" unique_id=1786497544]
+position = Vector2(6656, -12682)
+rotation = 1.5707964
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_34opm")
+
+[node name="dummy_car27" type="Sprite2D" parent="dummy_cars" unique_id=838095008]
+position = Vector2(4282.0005, -12419)
+scale = Vector2(0.11, 0.13)
+texture = ExtResource("9_m1ssv")
+
+[node name="dummy_car34" type="Sprite2D" parent="dummy_cars" unique_id=411896579]
+position = Vector2(6323, -12608)
+rotation = 1.5707964
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_lucih")
+
+[node name="dummy_car37" type="Sprite2D" parent="dummy_cars" unique_id=1037709054]
+position = Vector2(7248.999, -12512.999)
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("7_8q2mf")
+
+[node name="dummy_car40" type="Sprite2D" parent="dummy_cars" unique_id=1466315188]
+position = Vector2(5221, -11001)
+rotation = 1.5707964
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_4nmfs")
+
+[node name="arrow" type="Sprite2D" parent="." unique_id=1126120142]
+modulate = Color(1, 1, 1, 0.6313726)
+position = Vector2(952.00006, -4887)
+rotation = 3.1415927
+scale = Vector2(0.66087747, 0.64831734)
+texture = ExtResource("10_lucih")
+
+[node name="arrow2" type="Sprite2D" parent="." unique_id=1516262645]
+modulate = Color(1, 1, 1, 0.6313726)
+position = Vector2(795.99994, -16335)
+rotation = 4.712389
+scale = Vector2(0.66087747, 0.64831734)
+texture = ExtResource("10_lucih")

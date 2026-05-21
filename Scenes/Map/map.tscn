@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://deoowmjvrvmh0" path="res://Assets/Images/Sprites/car_sprite_4.png" id="30_tr1ul"]
 [ext_resource type="Texture2D" uid="uid://blt0fxdok10gf" path="res://Assets/Images/Sprites/bus_sprite.png" id="31_1lxys"]
 [ext_resource type="Texture2D" uid="uid://kutrerxlrwmy" path="res://Assets/Images/Sprites/police_car_1.png" id="32_nupl1"]
+[ext_resource type="Texture2D" uid="uid://87xrs1ss2kpk" path="res://Assets/Images/Buildings/road_arrow.png" id="33_kgrij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oy1rq"]
 texture = ExtResource("2_e0an3")
@@ -2951,3 +2952,26 @@ position = Vector2(-1528.0002, -4224)
 rotation = -3.1415925
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("27_nupl1")
+
+[node name="arrow" type="Sprite2D" parent="." unique_id=499667744]
+modulate = Color(1, 1, 1, 0.6313726)
+position = Vector2(-2237, -5439)
+rotation = 3.1415927
+scale = Vector2(0.66087747, 0.64831734)
+texture = ExtResource("33_kgrij")
+flip_h = true
+
+[node name="arrow2" type="Sprite2D" parent="." unique_id=271809179]
+modulate = Color(1, 1, 1, 0.6313726)
+position = Vector2(4953, 725)
+rotation = 3.1415927
+scale = Vector2(0.66087747, 0.64831734)
+texture = ExtResource("33_kgrij")
+flip_h = true
+
+[node name="arrow3" type="Sprite2D" parent="." unique_id=654271476]
+modulate = Color(1, 1, 1, 0.6313726)
+position = Vector2(7640.0005, 726.99994)
+rotation = 3.1415927
+scale = Vector2(0.66087747, 0.64831734)
+texture = ExtResource("33_kgrij")
